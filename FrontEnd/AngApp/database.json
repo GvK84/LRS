@@ -1,0 +1,29 @@
+{
+  "users": [
+  {
+    "Id":1, "Name": "PTest1", "Surname": "Testsurname1",
+    "BirthDate": "01/13/1970/", "UserTypeId": 1, "UserTitleId": 1,
+    "EmailAddress": "test@test.org", "IsActive": true
+  },
+  {
+    "Id":2, "Name": "PTest2", "Surname": "Testsurname2",
+    "BirthDate": "01/13/1970/", "UserTypeId": 1, "UserTitleId": 1,
+    "EmailAddress": "test@test.org", "IsActive": true
+  },
+  {
+    "Id":3, "Name": "PTest3", "Surname": "Testsurname3",
+    "BirthDate": "01/13/1970/", "UserTypeId": 1, "UserTitleId": 1,
+    "EmailAddress": "test@test.org", "IsActive": true
+  },
+  {
+    "Id":4, "Name": "PTest4", "Surname": "Testsurname4",
+    "BirthDate": "01/13/1970/", "UserTypeId": 1, "UserTitleId": 1,
+    "EmailAddress": "test@test.org", "IsActive": true
+  },
+  {
+    "Id":5, "Name": "PTest5", "Surname": "Testsurname5",
+    "BirthDate": "01/13/1970/", "UserTypeId": 1, "UserTitleId": 1,
+    "EmailAddress": "test@test.org", "IsActive": true
+  }
+]
+}

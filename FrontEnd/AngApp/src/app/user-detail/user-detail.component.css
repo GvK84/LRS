@@ -1,0 +1,26 @@
+table, thead, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+caption {
+  font-size: large;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 5px;
+}
+th{
+  text-align: right;
+}
+
+button {
+  padding:5px 5px;
+  background-color:#e3e7fd;
+  text-align:center;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color:#7f9cd1;
+}

@@ -1,0 +1,38 @@
+/* table, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+table {
+width: 100%;
+}
+
+th,td {
+  padding: 5px;
+  text-align: center;
+}
+ */
+
+/* tr:hover {background-color: rgb(182, 184, 194);} */
+ul {
+  padding: 0;
+}
+
+li {
+  display: list-item;
+  list-style-type:square;
+  list-style-position:outside;
+}
+
+button {
+  padding:5px 5px;
+  margin:5px 5px;
+  background-color:#e3e7fd;
+  text-align:center;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color:#7f9cd1;
+}
+

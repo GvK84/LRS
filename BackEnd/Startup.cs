@@ -28,7 +28,13 @@ namespace BackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", policy =>
+                {
+                    policy.WithOrigins("http://example.com", "http://www.contoso.com", "http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                });
+            });
             services.AddControllers();
             services.AddDbContext<LRS_DBContext>(opt =>
                                                opt.UseSqlServer(Configuration.GetConnectionString("LRSDatabase")));
@@ -37,6 +43,8 @@ namespace BackEnd
             //{
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd", Version = "v1" });
             //});
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,21 +52,42 @@ namespace BackEnd
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BackEnd v1"));
+                app.UseDeveloperExceptionPage(); 
             }
+
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
+            
+            app.UseStaticFiles();
+
+            
+
+            
+
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
+            app.UseCors("MyPolicy");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                //endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

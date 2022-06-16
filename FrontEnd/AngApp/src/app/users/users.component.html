@@ -1,0 +1,31 @@
+<h2>Our Users</h2>
+
+<!-- <table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Surname</th>
+
+    <th>View Details</th>
+  </tr>
+  <tr *ngFor="let user of users">
+
+      <td>{{user.id}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.surname}}</td>
+
+      <td><a routerLink="/users/{{user.id}}"><button>View</button></a></td>
+
+  </tr>
+</table> -->
+
+
+<ul>
+  <li *ngFor="let user of users">
+    <a routerLink="/users/{{user.id}}"><button>View</button></a>
+    <span><b>Id = </b>{{user.id}},  </span>
+    <span><b>Name = </b>{{user.surname}}, </span>
+    <span>{{user.name}} </span>
+
+  </li>
+</ul>

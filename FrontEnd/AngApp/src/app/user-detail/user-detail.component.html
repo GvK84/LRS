@@ -1,0 +1,42 @@
+<table *ngIf="user">
+  <caption>Details of user {{user.id}}</caption>
+  <tbody>
+    <tr>
+      <th scope="row">Id</th>
+      <td>{{user.id}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Name</th>
+      <td>{{user.name}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Surname</th>
+      <td>{{user.surname}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Date of Birth</th>
+      <td>{{user.birthDate | date:"dd/MM/yyyy"}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{user.emailAddress}}</td>
+    </tr>
+    <tr>
+      <th scope="row">User Title</th>
+      <td>{{user.userTitleId}}</td>
+    </tr>
+    <tr>
+      <th scope="row">User Type</th>
+      <td>{{user.userTypeId}}</td>
+    </tr>
+    <tr>
+      <th scope="row">Active</th>
+      <td>{{user.isActive}}</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+<button type="button" (click)="goBack()">Back</button>
+
