@@ -7,36 +7,45 @@
     </tr>
     <tr>
       <th scope="row">Name</th>
-      <td>{{user.name}}</td>
+      <td><input id="Name" #name type="text" [(ngModel)]="user.name" placeholder="Name"/></td>
     </tr>
     <tr>
       <th scope="row">Surname</th>
-      <td>{{user.surname}}</td>
+      <td><input id="Surname" #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>
     </tr>
     <tr>
       <th scope="row">Date of Birth</th>
-      <td>{{user.birthDate | date:"dd/MM/yyyy"}}</td>
+      <td><input id="Date of Birth" #birthDate type="text" [(ngModel)]="user.birthDate" placeholder="Date of Birth"/></td>
     </tr>
     <tr>
       <th scope="row">Email</th>
-      <td>{{user.emailAddress}}</td>
+      <td><input id="Email" #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>
     </tr>
     <tr>
       <th scope="row">User Title</th>
-      <td>{{user.userTitleId}}</td>
+      <td><input id="User Title" #userTitleId type="text" [(ngModel)]="user.userTitleId" placeholder="User Title"/></td>
     </tr>
     <tr>
       <th scope="row">User Type</th>
-      <td>{{user.userTypeId}}</td>
+      <td><input id="User Type" #userTypeId type="text" [(ngModel)]="user.userTypeId" placeholder="User Type"/></td>
     </tr>
     <tr>
       <th scope="row">Active</th>
-      <td>{{user.isActive}}</td>
+      <!-- <td><input id="Active" type="checkbox" [(ngModel)]="user.isActive" placeholder="Active"/></td> -->
+      <td><input id="Active" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>
     </tr>
   </tbody>
 </table>
 <br>
 <br>
 
+
+<button type="button" (click)="save()">Update</button>
+
+<br>
+<br>
 <button type="button" (click)="goBack()">Back</button>
+<br>
+<br>
+<button type="button" (click)="delete()">Delete</button>
 

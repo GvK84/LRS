@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ApiuserService } from './apiuser.service';
+import { MapComponent } from './map/map.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UserAddComponent } from './user-add/user-add.component';
 
 
 @NgModule({
@@ -17,7 +20,10 @@ import { ApiuserService } from './apiuser.service';
     MenuComponent,
     UsersComponent,
     HomeComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    MapComponent,
+    MessagesComponent,
+    UserAddComponent
   ],
   imports: [
     BrowserModule,

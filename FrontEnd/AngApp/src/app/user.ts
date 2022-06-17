@@ -8,3 +8,4 @@ export interface User {
   emailAddress: string;
   isActive: boolean;
 }
+

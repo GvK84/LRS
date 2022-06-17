@@ -1,0 +1,43 @@
+<table>
+  <caption>Add new user</caption>
+  <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><input id="Name" #name type="text" [(ngModel)]="nuser.name" placeholder="Name"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Surname</th>
+      <td><input id="Surname" #surname type="text" [(ngModel)]="nuser.surname" placeholder="Surname"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Date of Birth</th>
+      <td><input id="Date of Birth" #birthDate type="text" [(ngModel)]="nuser.birthDate" placeholder="Date of Birth"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td><input id="Email" #emailAddress type="email" [(ngModel)]="nuser.emailAddress" placeholder="Email"/></td>
+    </tr>
+    <tr>
+      <th scope="row">User Title</th>
+      <td><input id="User Title" #userTitleId type="text" [(ngModel)]="nuser.userTitleId" placeholder="User Title"/></td>
+    </tr>
+    <tr>
+      <th scope="row">User Type</th>
+      <td><input id="User Type" #userTypeId type="text" [(ngModel)]="nuser.userTypeId" placeholder="User Type"/></td>
+    </tr>
+    <tr>
+      <th scope="row">Active</th>
+      <!-- <td><input id="Active" type="checkbox" [(ngModel)]="user.isActive" placeholder="Active"/></td> -->
+      <td><input id="Active" #isActive [(ngModel)]="nuser.isActive" placeholder="Active"/></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+
+<button type="button" (click)="addnew(nuser)">Save</button>
+
+<br>
+<br>
+<button type="button" (click)="goBack()">Back</button>
+

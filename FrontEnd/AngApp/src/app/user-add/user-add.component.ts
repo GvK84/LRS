@@ -3,47 +3,38 @@ import { User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiuserService } from '../apiuser.service';
+import { NewUser } from '../newuser';
 
 @Component({
-  selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  selector: 'app-user-add',
+  templateUrl: './user-add.component.html',
+  styleUrls: ['./user-add.component.css']
 })
-export class UserDetailComponent implements OnInit {
+export class UserAddComponent implements OnInit {
 
-  user: User | undefined;
+  nuser: User = NewUser;
+
 
   constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location) {
 
   }
 
   ngOnInit(): void {
-    this.getUser();
-  }
 
-  getUser(): void {
-    const Id = parseInt(this.route.snapshot.paramMap.get('Id')!, 10);
-    this.userService.getUser(Id).subscribe(user => this.user = user);
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  save(): void {
+  /* save(): void {
     if (this.user) {
       this.userService.updateUser(this.user)
         .subscribe(() => this.goBack());
     }
+  } */
+  addnew(user: User): void {
+    if (!user.name || !user.surname || !user.userTitleId || !user.userTypeId) { return; }
+    this.userService.addUser(user as User).subscribe(() => this.goBack());
   }
-
-  delete(): void {
-    if (this.user) {
-      this.userService.deleteUser(this.user)
-        .subscribe(() => this.goBack());
-    }
-  }
-
-
-
 }

@@ -1,31 +1,38 @@
 <h2>Our Users</h2>
 
-<!-- <table>
+<table>
   <tr>
     <th>Id</th>
-    <th>Name</th>
-    <th>Surname</th>
-
-    <th>View Details</th>
+    <th>Full Name</th>
+    <th>Actions</th>
   </tr>
   <tr *ngFor="let user of users">
-
       <td>{{user.id}}</td>
-      <td>{{user.name}}</td>
-      <td>{{user.surname}}</td>
-
-      <td><a routerLink="/users/{{user.id}}"><button>View</button></a></td>
-
+      <td><span>{{user.surname}} </span><span>{{user.name}} </span></td>
+      <td><div class="idbuttons">
+        <a routerLink="/users/{{user.id}}"><button>View/Edit</button></a>
+        <button (click)="delete(user)">Delete</button>
+      </div></td>
   </tr>
-</table> -->
+</table>
 
-
+<br>
+<br>
+<div class="buttonbar"><a routerLink="/addnew"><button>Add</button></a></div>
+<br>
+<br>
+<input id="query" #query type="text" placeholder="Search Full Name"/>
+<button (click)="findUser(query.value)">search</button>
+<!--
 <ul>
   <li *ngFor="let user of users">
     <a routerLink="/users/{{user.id}}"><button>View</button></a>
     <span><b>Id = </b>{{user.id}},  </span>
-    <span><b>Name = </b>{{user.surname}}, </span>
+    <span><b>Full Name = </b>{{user.surname}}, </span>
     <span>{{user.name}} </span>
 
   </li>
 </ul>
+ -->
+
+<!-- <button type="button" (click)="add(name.value, surname.value, birthDate.value, emailAddress.value, userTitleId.value, userTypeId.value, isActive.value)">Add New</button> -->

@@ -1,4 +1,4 @@
-/* table, th, td {
+table, th, td {
   border: 1px solid;
   border-collapse: collapse;
 }
@@ -11,9 +11,9 @@ th,td {
   padding: 5px;
   text-align: center;
 }
- */
 
-/* tr:hover {background-color: rgb(182, 184, 194);} */
+
+tr:hover {background-color: rgb(182, 184, 194);}
 ul {
   padding: 0;
 }
