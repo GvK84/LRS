@@ -1,17 +1,20 @@
-
 .topnav {
   background-color: transparent;
   overflow: hidden;
+  display:inline-flex;
+  flex-direction: row;
+  margin-top: 8px;
 }
 
-
 .topnav a {
-  float: left;
+  /* float: left; */
   color: #f2f2f2;
   text-align: center;
-  padding: 12px 12px;
+  padding: 15px 15px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 
@@ -25,3 +28,16 @@
   background-color: #756de6fa;
   color: white;
 }
+
+.welcome {
+  float: right;
+  margin-top: 8px;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 15px 15px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+

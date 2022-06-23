@@ -27,7 +27,6 @@
     </tr>
     <tr>
       <th scope="row">Active</th>
-      <!-- <td><input id="Active" type="checkbox" [(ngModel)]="user.isActive" placeholder="Active"/></td> -->
       <td><input id="Active" #isActive [(ngModel)]="nuser.isActive" placeholder="Active"/></td>
     </tr>
   </tbody>
@@ -35,9 +34,9 @@
 <br>
 <br>
 
-<button type="button" (click)="addnew(nuser)">Save</button>
+<button (click)="addnew(nuser)">Save</button>
 
 <br>
 <br>
-<button type="button" (click)="goBack()">Back</button>
+<button (click)="goBack()">Go Back</button>
 

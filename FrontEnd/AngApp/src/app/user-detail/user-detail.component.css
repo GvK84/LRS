@@ -10,19 +10,22 @@ caption {
   border: 1px solid;
   padding: 5px;
 }
+
 th{
   text-align: right;
 }
 
 button {
   padding:5px 5px;
-  background-color:#e3e7fd;
+  margin:5px 5px;
+  background-color:#dcdbecfa;
   text-align:center;
   border-radius: 5px;
+  border-color:black;
 }
 
 button:hover {
-  background-color:#7f9cd1;
+  background-color:#756de6fa;
 }
 
 input{
@@ -30,3 +33,5 @@ input{
   width:250px;
 
 }
+
+
