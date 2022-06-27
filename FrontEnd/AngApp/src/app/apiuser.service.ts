@@ -4,7 +4,7 @@ import { HttpClient, } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 
-import { User } from './user';
+import { User, Title, Type } from './user';
 
 
 
@@ -16,6 +16,8 @@ import { User } from './user';
 export class ApiuserService {
 
   usersUrl = 'https://localhost:5001/api/users';
+  titlesUrl = 'https://localhost:5001/api/titles';
+  typesUrl = 'https://localhost:5001/api/types';
 
   constructor(private http: HttpClient, private messageService: MessageService) {}
 
@@ -24,6 +26,14 @@ export class ApiuserService {
   }
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(tap(_=> this.log(`fetched users`)), catchError(this.handleError<User[]>(`getUsers`, [])));
+  }
+
+  getTitles(): Observable<Title[]> {
+    return this.http.get<Title[]>(this.titlesUrl).pipe(tap(_=> this.log(`fetched titles`)), catchError(this.handleError<Title[]>(`getTitles`, [])));
+  }
+
+  getTypes(): Observable<Type[]> {
+    return this.http.get<Type[]>(this.typesUrl).pipe(tap(_=> this.log(`fetched types`)), catchError(this.handleError<Type[]>(`getTypes`, [])));
   }
 
   getUser(id: Number): Observable<User> {

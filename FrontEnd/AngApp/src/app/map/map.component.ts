@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef, OnDestroy, } from '@angular/c
 
 import Map from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
-import Bookmarks from '@arcgis/core/widgets/Bookmarks';
-import Expand from '@arcgis/core/widgets/Expand';
 import esriConfig from "@arcgis/core/config";
 
 @Component({

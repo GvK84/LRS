@@ -19,7 +19,8 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users.filter(u => u.isActive==true));
+    this.userService.getUsers().subscribe(users => this.users = users);
+      /* = users.filter(u => u.isActive==true)); */
   }
 
   delete(user:User): void {

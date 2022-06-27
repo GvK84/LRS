@@ -12,7 +12,6 @@ import { ApiuserService } from './apiuser.service';
 import { MapComponent } from './map/map.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserAddComponent } from './user-add/user-add.component';
-import { MapRoutingModule } from './map-routing.module';
 
 
 @NgModule({
@@ -30,8 +29,7 @@ import { MapRoutingModule } from './map-routing.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    MapRoutingModule
+    FormsModule
   ],
   providers: [ApiuserService],
   bootstrap: [AppComponent]

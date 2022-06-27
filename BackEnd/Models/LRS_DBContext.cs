@@ -16,6 +16,10 @@ namespace BackEnd.Models
             : base(options)
         {
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder
+        .UseLazyLoadingProxies();
+        
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserTitle> UserTitles { get; set; }

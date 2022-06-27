@@ -24,7 +24,15 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Where(u=> u.IsActive == true).ToListAsync();
+            //var myusers = _context.WebUsers;
+            //foreach (WebUser u in myusers)
+            //{
+            //    u.UserTypeDesc = u.UserType.Description;
+            //    u.UserTitleDesc = u.UserType.Description;
+            //}
+            //return await myusers.ToArrayAsync();
+            //return await _context.Users.Include(u => u.UserTitle).Where(u => u.UserTitleId == u.UserTitle.Id).ToListAsync();
         }
 
         // GET: api/Users/5
@@ -104,4 +112,6 @@ namespace BackEnd.Controllers
             return _context.Users.Any(e => e.Id == id);
         }
     }
+
+
 }

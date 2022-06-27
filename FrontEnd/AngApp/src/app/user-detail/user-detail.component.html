@@ -15,7 +15,7 @@
     </tr>
     <tr>
       <th scope="row">Date of Birth</th>
-      <td><input id="Date of Birth" #birthDate type="text" [(ngModel)]="user.birthDate" placeholder="Date of Birth"/></td>
+      <td><input id="Date of Birth" #date type="text" [(ngModel)]="user.birth"  placeholder="Date of Birth"/></td>
     </tr>
     <tr>
       <th scope="row">Email</th>
@@ -23,26 +23,37 @@
     </tr>
     <tr>
       <th scope="row">User Title</th>
-      <td><input id="User Title" #userTitleId type="text" [(ngModel)]="user.userTitleId" placeholder="User Title"/></td>
+      <td>
+        <select id="UserTitle" [(ngModel)]="user.userTitleId" (change)="onSelectTitle($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
+        <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option> </select>
+      </td>
     </tr>
     <tr>
       <th scope="row">User Type</th>
-      <td><input id="User Type" #userTypeId type="text" [(ngModel)]="user.userTypeId" placeholder="User Type"/></td>
+      <td>
+        <select id="UserType" [(ngModel)]="user.userTypeId" (change)="onSelectType($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
+        <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option> </select>
+      </td>
     </tr>
     <tr>
       <th scope="row">Active</th>
       <td><input id="Active" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>
     </tr>
+
   </tbody>
 </table>
 <br>
 <br>
+
+{{user | json}}
+
 
 <div><button type="button" (click)="save()">Update</button><button type="button" (click)="delete()">Delete</button></div>
 
 <br>
 <br>
 <button type="button" (click)="goBack()">Go Back</button>
+
 
 
 
