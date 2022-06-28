@@ -52,6 +52,7 @@ namespace BackEnd.Models
                     .HasForeignKey(d => d.UserTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_User_ToUserType");
+
             });
 
             modelBuilder.Entity<UserTitle>(entity =>

@@ -5,13 +5,14 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { UsersComponent } from './users/users.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { ApiuserService } from './apiuser.service';
 import { MapComponent } from './map/map.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserAddComponent } from './user-add/user-add.component';
+
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { UserAddComponent } from './user-add/user-add.component';
     UserDetailComponent,
     MapComponent,
     MessagesComponent,
-    UserAddComponent
+    UserAddComponent,
   ],
   imports: [
     BrowserModule,

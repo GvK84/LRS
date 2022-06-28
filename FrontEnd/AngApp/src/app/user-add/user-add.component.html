@@ -11,23 +11,26 @@
     </tr>
     <tr>
       <th scope="row">Date of Birth</th>
-      <td><input id="Date of Birth" #birthDate type="text" [(ngModel)]="nuser.birthDate" placeholder="Date of Birth"/></td>
+      <td><input id="Date of Birth" #date type="date" [ngModel]="nuser.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="nuser.birthDate = $event" /></td>
     </tr>
     <tr>
       <th scope="row">Email</th>
       <td><input id="Email" #emailAddress type="email" [(ngModel)]="nuser.emailAddress" placeholder="Email"/></td>
     </tr>
+  <tr>
     <tr>
       <th scope="row">User Title</th>
-      <td><input id="User Title" #userTitleId type="text" [(ngModel)]="nuser.userTitleId" placeholder="User Title"/></td>
+      <td>
+        <select id="UserTitle" [(ngModel)]="nuser.userTitleId" (change)="onSelectTitle($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
+        <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option> </select>
+      </td>
     </tr>
     <tr>
       <th scope="row">User Type</th>
-      <td><input id="User Type" #userTypeId type="text" [(ngModel)]="nuser.userTypeId" placeholder="User Type"/></td>
-    </tr>
-    <tr>
-      <th scope="row">Active</th>
-      <td><input id="Active" #isActive [(ngModel)]="nuser.isActive" placeholder="Active"/></td>
+      <td>
+        <select id="UserType" [(ngModel)]="nuser.userTypeId" (change)="onSelectType($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
+        <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option> </select>
+      </td>
     </tr>
   </tbody>
 </table>

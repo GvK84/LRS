@@ -2,14 +2,13 @@ export interface User {
   id: number;
   name: string;
   surname: string;
-  birthDate?: string;
+  birthDate?: Date;
   userTypeId: number;
   userTitleId: number;
   emailAddress: string;
   isActive: boolean;
   userTitleDesc:string;
   userTypeDesc:string;
-  birth?: Date;
 }
 
 export interface Title {
@@ -22,4 +21,5 @@ export interface Type {
   description: string;
   code: string;
 }
+
 

@@ -7,6 +7,7 @@ import { ApiuserService } from '../apiuser.service';
 
 
 
+
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
@@ -56,6 +57,10 @@ export class UserDetailComponent implements OnInit{
     }
   }
 
+  add(): void {
+    this.goBack()
+  }
+
   delete(): void {
     if (this.user) {
       this.userService.deleteUser(this.user)
@@ -70,4 +75,6 @@ export class UserDetailComponent implements OnInit{
   getTypes(): void {
     this.userService.getTypes().subscribe(types => this.types = types);
   }
+
+
 }

@@ -18,12 +18,11 @@ namespace BackEnd.Models
         public string EmailAddress { get; set; }
         public bool? IsActive { get; set; }
 
+
         [NotMapped]
-        public string UserTitleDesc { get { return UserTitle.Description; }}
+        public string UserTitleDesc { get { return UserTitle.Description; } }
         [NotMapped]
         public string UserTypeDesc { get { return UserType.Description; } }
-        [NotMapped]
-        public string? birth { get { return BirthDate?.ToString("dd/MM/yyyy"); } }
 
         [JsonIgnore]
         public virtual UserTitle UserTitle { get; set; }

@@ -14,9 +14,9 @@
       <td><input id="Surname" #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>
     </tr>
     <tr>
-      <th scope="row">Date of Birth</th>
-      <td><input id="Date of Birth" #date type="text" [(ngModel)]="user.birth"  placeholder="Date of Birth"/></td>
-    </tr>
+        <th scope="row">Date of Birth</th>
+        <td><input id="Date of Birth" #date type="date" [ngModel]="user.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="user.birthDate = $event" /></td>
+      </tr>
     <tr>
       <th scope="row">Email</th>
       <td><input id="Email" #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>
@@ -44,9 +44,6 @@
 </table>
 <br>
 <br>
-
-{{user | json}}
-
 
 <div><button type="button" (click)="save()">Update</button><button type="button" (click)="delete()">Delete</button></div>
 

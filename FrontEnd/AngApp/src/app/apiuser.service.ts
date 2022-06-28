@@ -47,7 +47,7 @@ export class ApiuserService {
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl,user).pipe(
-      tap((newUser: User) => this.log(`added user w/ id=${newUser.id}`)),
+      tap(_ => this.log(`added user`)),
       catchError(this.handleError<User>(`addUser`))
     );
   }
