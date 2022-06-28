@@ -23,24 +23,13 @@ namespace BackEnd
             {
                 options.AddPolicy("MyPolicy", policy =>
                 {
-                    policy.WithOrigins("http://example.com", "http://www.contoso.com", "http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                    //policy.WithOrigins("http://example.com", "http://www.contoso.com", "http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                    policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
             });
             services.AddControllers().AddNewtonsoftJson();
-            //   (opt =>
-            //    {
-            //        opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-            //    })
-            //;
             services.AddDbContext<LRS_DBContext>(opt =>
-                                               opt.UseSqlServer(Configuration.GetConnectionString("LRSDatabase")));
-
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BackEnd", Version = "v1" });
-            //});
-
-            
+                                               opt.UseSqlServer(Configuration.GetConnectionString("LRSDatabase")));      
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,21 +45,10 @@ namespace BackEnd
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-            
-            app.UseStaticFiles();
-
-            
-
-            
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -80,10 +58,9 @@ namespace BackEnd
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllers();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}").RequireCors("MyPolicy");
             });
         }
     }

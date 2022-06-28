@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace BackEnd.Controllers
 {
     [Route("api/Users")]
     [ApiController]
+    
     public class UsersController : ControllerBase
     {
         private readonly LRS_DBContext _context;
