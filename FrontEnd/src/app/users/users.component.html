@@ -1,4 +1,5 @@
-<h2>Our Users</h2>
+<h2 *ngIf="results==false">Our Users</h2>
+<h2 *ngIf="results==true">Results</h2>
 
 <table>
   <tr>
@@ -18,8 +19,11 @@
 
 <br>
 <br>
-<div><a routerLink="/addnew"><button>Add</button></a></div>
+<div><button *ngIf="results==false"> <a routerLink="/addnew"></a>Add</button></div>
 <br>
 <br>
-<input id="query" #query type="text" placeholder="Search Full Name"/>
-<button (click)="findUser(query.value)">search</button>
+
+<input id="query" #query type="text" placeholder="Search Full Name" />
+
+<button *ngIf="results==false" (click)="findUser(query.value)">search</button>
+<button *ngIf="results==true" (click)="clear()">clear</button>

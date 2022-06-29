@@ -21,6 +21,7 @@ namespace BackEnd
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).ConfigureLogging(builder => builder.AddLog4Net("log4net.config"));
+
     }
 }

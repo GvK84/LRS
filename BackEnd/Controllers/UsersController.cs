@@ -16,7 +16,7 @@ namespace BackEnd.Controllers
     public class UsersController : ControllerBase
     {
         private readonly LRS_DBContext _context;
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public UsersController(LRS_DBContext context)
         {
             _context = context;
@@ -27,14 +27,6 @@ namespace BackEnd.Controllers
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             return await _context.Users.Where(u=> u.IsActive == true).ToListAsync();
-            //var myusers = _context.WebUsers;
-            //foreach (WebUser u in myusers)
-            //{
-            //    u.UserTypeDesc = u.UserType.Description;
-            //    u.UserTitleDesc = u.UserType.Description;
-            //}
-            //return await myusers.ToArrayAsync();
-            //return await _context.Users.Include(u => u.UserTitle).Where(u => u.UserTitleId == u.UserTitle.Id).ToListAsync();
         }
 
         // GET: api/Users/5
@@ -45,7 +37,8 @@ namespace BackEnd.Controllers
 
             if (user == null)
             {
-                return NotFound();
+                //return NotFound();
+                return StatusCode(500);
             }
 
             return user;
@@ -71,7 +64,8 @@ namespace BackEnd.Controllers
             {
                 if (!UserExists(id))
                 {
-                    return NotFound();
+                    //return NotFound();
+                    return StatusCode(500);
                 }
                 else
                 {
@@ -87,10 +81,13 @@ namespace BackEnd.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return NoContent();
-            //return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
         }
 
         // DELETE: api/Users/5
@@ -100,7 +97,8 @@ namespace BackEnd.Controllers
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
-                return NotFound();
+                //return NotFound();
+                return StatusCode(500);
             }
 
             _context.Users.Remove(user);

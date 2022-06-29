@@ -10,6 +10,7 @@ import { ApiuserService } from '../apiuser.service';
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  results: boolean = false;
 
   constructor(private userService: ApiuserService) {
   }
@@ -20,7 +21,6 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
-      /* = users.filter(u => u.isActive==true)); */
   }
 
   delete(user:User): void {
@@ -29,7 +29,13 @@ export class UsersComponent implements OnInit {
   }
 
   findUser(query:string): void {
-    this.users=this.users.filter(u => (u.surname+" "+u.name).match(query))
+    this.users = this.users.filter(u => (u.surname.toLowerCase() + " " + u.name.toLowerCase()).match(query.toLowerCase()))
+    this.results = true;
+  }
+
+  clear(): void {
+    this.results = false;
+    this.ngOnInit();
   }
 
 }

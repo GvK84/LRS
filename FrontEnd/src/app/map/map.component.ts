@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, OnDestroy, } from '@angular/core';
-
 import Map from '@arcgis/core/WebMap';
 import MapView from '@arcgis/core/views/MapView';
 import esriConfig from "@arcgis/core/config";
+import { NGXLogger } from 'ngx-logger';
 
 @Component({
   selector: 'app-map',
@@ -11,7 +11,7 @@ import esriConfig from "@arcgis/core/config";
 })
 export class MapComponent implements OnInit, OnDestroy {
   public view: any = null;
-
+  constructor(private logger: NGXLogger) { }
   // The <div> where we will place the map
   @ViewChild('mapViewNode', { static: true }) private mapViewEl!: ElementRef;
 
@@ -22,7 +22,7 @@ export class MapComponent implements OnInit, OnDestroy {
 /*       portalItem: {
         id: 'aa1d3f80270146208328cf66d022e09c',
       }, */
-      basemap: "arcgis-topographic"
+      basemap: "arcgis-navigation"
     });
 
     const view = new MapView({
@@ -30,32 +30,8 @@ export class MapComponent implements OnInit, OnDestroy {
       map: map,
       center: [14.506944, 35.884445],
       zoom: 15
-
     });
 
-    /* const bookmarks = new Bookmarks({
-      view,
-      // allows bookmarks to be added, edited, or deleted
-      editingEnabled: true,
-    }); */
-
-    /* const bkExpand = new Expand({
-      view,
-      content: bookmarks,
-      expanded: true,
-    }); */
-
-    /* // Add the widget to the top-right corner of the view
-    view.ui.add(bkExpand, 'top-right'); */
-
-    // bonus - how many bookmarks in the webmap?
-    /* webmap.when(() => {
-      if (webmap.bookmarks && webmap.bookmarks.length) {
-        console.log('Bookmarks: ', webmap.bookmarks.length);
-      } else {
-        console.log('No bookmarks in this webmap.');
-      }
-    }); */
 
     this.view = view;
     return this.view.when();
@@ -65,7 +41,7 @@ export class MapComponent implements OnInit, OnDestroy {
     // Initialize MapView and return an instance of MapView
     this.initializeMap().then(() => {
       // The map has been initialized
-        console.log('The map is ready.');
+        this.logger.log('The map is ready.');
     });
   }
 
