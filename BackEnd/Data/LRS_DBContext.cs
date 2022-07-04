@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Configuration;
+using BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
+
 #nullable disable
 
-namespace BackEnd.Models
+namespace BackEnd.Data
 {
     public partial class LRS_DBContext : DbContext
     {
+
         public LRS_DBContext()
         {
         }
@@ -18,8 +22,9 @@ namespace BackEnd.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder
+        .UseSqlServer(ConnectionService.connstring)
         .UseLazyLoadingProxies();
-        
+
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserTitle> UserTitles { get; set; }

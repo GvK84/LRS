@@ -7,33 +7,43 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
 using Microsoft.AspNetCore.Cors;
+using BackEnd.Interfaces;
+using BackEnd.Repositories;
+using BackEnd.Data;
+using BackEnd.Services;
 
 namespace BackEnd.Controllers
 {
     [Route("api/Users")]
     [ApiController]
-    
+
     public class UsersController : ControllerBase
     {
-        private readonly LRS_DBContext _context;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public UsersController(LRS_DBContext context)
+        
+
+        private readonly IUserService _userService;
+        
+        public UsersController()
         {
-            _context = context;
+            _userService = new UserService(new UserRepository(new LRS_DBContext()));
         }
+
+
 
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.Where(u=> u.IsActive == true).ToListAsync();
+            var users = await _userService.GetUsers();
+            return Ok(users);
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userService.GetUserByID(id);
 
             if (user == null)
             {
@@ -54,15 +64,15 @@ namespace BackEnd.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _userService.UpdateUser(user);
 
             try
             {
-                await _context.SaveChangesAsync();
+                await _userService.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!_userService.UserExists(user))
                 {
                     //return NotFound();
                     return StatusCode(500);
@@ -85,8 +95,8 @@ namespace BackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            _userService.InsertUser(user);
+            await _userService.Save();
             return NoContent();
         }
 
@@ -94,23 +104,20 @@ namespace BackEnd.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userService.GetUserByID(id);
             if (user == null)
             {
                 //return NotFound();
                 return StatusCode(500);
             }
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
+            _userService.DeleteUser(user);
+            await _userService.Save();
 
             return NoContent();
         }
+       
 
-        private bool UserExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
-        }
     }
 
 

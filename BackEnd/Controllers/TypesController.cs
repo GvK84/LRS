@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BackEnd.Models;
+using BackEnd.Data;
+using BackEnd.Interfaces;
+using BackEnd.Repositories;
+using BackEnd.Services;
 
 namespace BackEnd.Controllers
 {
@@ -13,34 +17,39 @@ namespace BackEnd.Controllers
     [ApiController]
     public class TypesController : ControllerBase
     {
-        private readonly LRS_DBContext _context;
+        private readonly ITypeService _typeService;
 
-        public TypesController(LRS_DBContext context)
+        public TypesController()
         {
-            _context = context;
+            _typeService = new TypeService(new TypeRepository(new LRS_DBContext()));
         }
+
 
         // GET: api/Types
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetTypes()
         {
-            return await _context.UserTypes.ToListAsync();
+            var types = await _typeService.GetTypes();
+            return Ok(types);
         }
 
         // GET: api/Types/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetType(int id)
         {
-            var type = await _context.UserTypes.FindAsync(id);
+            var type = await _typeService.GetTypeByID(id);
 
             if (type == null)
             {
-                return NotFound();
+                //return NotFound();
+                return StatusCode(500);
             }
 
             return type;
         }
 
-      
+
+
+
     }
 }

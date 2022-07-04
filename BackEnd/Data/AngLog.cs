@@ -1,4 +1,4 @@
-﻿namespace BackEnd.Models
+﻿namespace BackEnd.Data
 {
     public class AngLog
     {
