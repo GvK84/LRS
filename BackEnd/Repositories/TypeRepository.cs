@@ -1,11 +1,7 @@
 ﻿using BackEnd.Interfaces;
-using BackEnd.Models;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 using BackEnd.Data;
 
 namespace BackEnd.Repositories

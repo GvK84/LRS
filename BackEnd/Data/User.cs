@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 #nullable disable
 
-namespace BackEnd.Models
+namespace BackEnd.Data
 {
     public partial class User
     {

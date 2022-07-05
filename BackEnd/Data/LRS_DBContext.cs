@@ -1,8 +1,5 @@
-﻿using System;
-using System.Configuration;
-using BackEnd.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+
 
 
 #nullable disable

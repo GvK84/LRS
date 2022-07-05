@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace BackEnd.Models
+namespace BackEnd.Data
 {
     public partial class UserTitle
     {
