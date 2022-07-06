@@ -6,15 +6,10 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface IUserRepository : IDisposable
+    public interface IUserRepository : IGenericRepository<User>
     {
-        Task<IEnumerable<User>> GetUsers();
-        Task<User> GetUserByID(int userId);
-        void InsertUser(User user);
-        void DeleteUser(User user);
-        void UpdateUser(User user);
-        Task Save();
-        bool UserExists(User user);
+        bool EntityExists(int id);
+        Task<IEnumerable<User>> GetAllActive();
 
     }
 }

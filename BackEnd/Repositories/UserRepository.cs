@@ -8,70 +8,22 @@ using BackEnd.Data;
 
 namespace BackEnd.Repositories
 {
-    public class UserRepository : IUserRepository, IDisposable
+    public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        private LRS_DBContext context;
-
-        public UserRepository(LRS_DBContext dbContext)
+        public UserRepository(LRS_DBContext dbContext) : base(dbContext)
         {
-            context = dbContext;
-        }
-
-        public async Task<IEnumerable<User>> GetUsers()
-        {
-            return await context.Users.ToListAsync();
-        }
-
-        public async Task<User> GetUserByID(int userId)
-        {
-            return await context.Users.FindAsync(userId);
-        }
-
-        public bool UserExists(User user)
-        {
-            return context.Users.Any(e => e.Id == user.Id);
-        }
-
-        public void InsertUser(User user)
-        {
-            context.Users.Add(user); 
+            
 
         }
-
-        public void DeleteUser(User user)
+        public bool EntityExists(int id)
         {
-            context.Users.Remove(user);         }
-
-        public void UpdateUser(User user)
-        {
-            context.Entry(user).State = EntityState.Modified;
+            return _context.Users.Any(e => e.Id == id);
         }
 
-        public async Task Save()
+        public async Task<IEnumerable<User>> GetAllActive()
         {
-            await context.SaveChangesAsync();
+            return await _context.Users.Where(u=>u.IsActive==true).ToListAsync();
         }
-
-        private bool disposed = false;
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposed)
-            {
-                if (disposing)
-                {
-                    context.Dispose();
-                }
-            }
-            disposed = true;
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
 
     }
 }

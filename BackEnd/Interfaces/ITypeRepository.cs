@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface ITypeRepository
+    public interface ITypeRepository: IGenericRepository<UserType>
     {
-        Task<IEnumerable<UserType>> GetTypes();
-        Task<UserType> GetTypeByID(int userTypeId);
     }
 }

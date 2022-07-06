@@ -6,23 +6,13 @@ using BackEnd.Data;
 
 namespace BackEnd.Repositories
 {
-    public class TypeRepository: ITypeRepository
+    public class TypeRepository : GenericRepository<UserType>, ITypeRepository
     {
-        private LRS_DBContext context;
-
-        public TypeRepository(LRS_DBContext dbContext)
+        public TypeRepository(LRS_DBContext dbContext) : base(dbContext)
         {
-            context = dbContext;
+
+
         }
 
-        public async Task<IEnumerable<UserType>> GetTypes()
-        {
-            return await context.UserTypes.ToListAsync();
-        }
-
-        public async Task<UserType> GetTypeByID(int userTypeId)
-        {
-            return await context.UserTypes.FindAsync(userTypeId);
-        }
     }
 }

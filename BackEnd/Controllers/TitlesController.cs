@@ -12,11 +12,11 @@ namespace BackEnd.Controllers
     [ApiController]
     public class TitlesController : ControllerBase
     {
-        private readonly ITitleService _titleService;
+        private readonly IUserService _service;
 
-        public TitlesController()
+        public TitlesController(IUserService mainservice)
         {
-            _titleService = new TitleService(new TitleRepository(new LRS_DBContext()));
+            _service = mainservice;
         }
 
 
@@ -24,7 +24,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserTitle>>> GetTitles()
         {
-            var titles = await _titleService.GetTitles();
+            var titles = await _service.GetTitles();
             return Ok(titles);
         }
 
@@ -32,7 +32,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserTitle>> GetTitle(int id)
         {
-            var title = await _titleService.GetTitleByID(id);
+            var title = await _service.GetTitle(id);
 
             if (title == null)
             {

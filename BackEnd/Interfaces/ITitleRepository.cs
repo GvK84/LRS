@@ -4,10 +4,8 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface ITitleRepository
+    public interface ITitleRepository : IGenericRepository<UserTitle>
     {
-        Task<IEnumerable<UserTitle>> GetTitles();
-        Task<UserTitle> GetTitleByID(int userTitleId);
 
     }
 }

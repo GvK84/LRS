@@ -12,11 +12,11 @@ namespace BackEnd.Controllers
     [ApiController]
     public class TypesController : ControllerBase
     {
-        private readonly ITypeService _typeService;
+        private readonly IUserService _service;
 
-        public TypesController()
+        public TypesController(IUserService mainservice)
         {
-            _typeService = new TypeService(new TypeRepository(new LRS_DBContext()));
+            _service = mainservice;
         }
 
 
@@ -24,7 +24,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetTypes()
         {
-            var types = await _typeService.GetTypes();
+            var types = await _service.GetTypes();
             return Ok(types);
         }
 
@@ -32,7 +32,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetType(int id)
         {
-            var type = await _typeService.GetTypeByID(id);
+            var type = await _service.GetType(id);
 
             if (type == null)
             {

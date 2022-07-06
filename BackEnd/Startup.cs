@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using BackEnd.Interfaces;
 using BackEnd.Repositories;
 using BackEnd.Data;
+using BackEnd.Services;
 
 namespace BackEnd
 {
@@ -34,7 +35,14 @@ namespace BackEnd
             services.AddControllers().AddNewtonsoftJson();
             services.AddDbContext<LRS_DBContext>(opt =>
                                                opt.UseSqlServer(ConnectionService.connstring));
-            services.AddTransient<IUserRepository, UserRepository>() ;
+            #region Repositories
+            services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<ITypeRepository, TypeRepository>();
+            services.AddTransient<ITitleRepository, TitleRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserService, UserService>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

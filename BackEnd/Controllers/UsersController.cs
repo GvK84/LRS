@@ -17,11 +17,11 @@ namespace BackEnd.Controllers
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
 
-        private readonly IUserService _userService;
+        private readonly IUserService _service;
         
-        public UsersController()
+        public UsersController(IUserService mainservice)
         {
-            _userService = new UserService(new UserRepository(new LRS_DBContext()));
+            _service = mainservice;
         }
 
 
@@ -30,7 +30,7 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var users = await _userService.GetUsers();
+            var users = await _service.GetActiveUsers();
             return Ok(users);
         }
 
@@ -38,7 +38,7 @@ namespace BackEnd.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _userService.GetUserByID(id);
+            var user = await _service.GetUser(id);
 
             if (user == null)
             {
@@ -52,30 +52,11 @@ namespace BackEnd.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public ActionResult PutUser(int id, User user)
         {
-            if (id != user.Id)
-            {
-                return BadRequest();
-            }
-
-            _userService.UpdateUser(user);
-
-            try
-            {
-                await _userService.Save();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_userService.UserExists(user))
-                {
-                    //return NotFound();
-                    return StatusCode(500);
-                }
-                else
-                {
-                    throw;
-                }
+            if (!_service.UpdateUser(id, user).Result) 
+            { 
+                return StatusCode(500); 
             }
 
             return NoContent();
@@ -84,31 +65,27 @@ namespace BackEnd.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public ActionResult<User> PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            _userService.InsertUser(user);
-            await _userService.Save();
+            if (!_service.CreateUser(user).Result)
+            {
+                return StatusCode(500);
+            }
             return NoContent();
         }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public ActionResult DeleteUser(int id)
         {
-            var user = await _userService.GetUserByID(id);
-            if (user == null)
+            if (!_service.DeleteUser(id).Result)
             {
-                //return NotFound();
                 return StatusCode(500);
             }
-
-            _userService.DeleteUser(user);
-            await _userService.Save();
-
             return NoContent();
         }
        
