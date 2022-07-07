@@ -10,12 +10,27 @@ namespace BackEnd.Services
     public class UserService : IUserService
     {
         //private readonly ModelStateDictionary _modelState;
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly LRS_DBContext _context;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(LRS_DBContext context)
         {
-            _unitOfWork = unitOfWork;
+            _context = context;
+            Users = new UserRepository(_context);
+            Titles = new TitleRepository(_context);
+            Types = new TypeRepository(_context);
         }
+
+        public UserService()
+        {
+            _context = new LRS_DBContext();
+            Users = new UserRepository(_context);
+            Titles = new TitleRepository(_context);
+            Types = new TypeRepository(_context);
+        }
+
+        public IUserRepository Users { get; private set; }
+        public ITitleRepository Titles { get; private set; }
+        public ITypeRepository Types { get; private set; }
 
         //protected bool ValidateUser(User userToValidate)
         //{
@@ -30,19 +45,19 @@ namespace BackEnd.Services
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            return await _unitOfWork.Users.GetAll();
+            return await Users.GetAll();
         }
 
         public async Task<IEnumerable<User>> GetActiveUsers()
         {
-            return await _unitOfWork.Users.GetAllActive();
-        }
-        public async Task<User> GetUser(int id)
-        {
-            User user = await _unitOfWork.Users.GetById(id);
-            return user;
+            return await Users.GetAllActive();
         }
 
+        public async Task<User> GetUser(int id)
+        {
+            User user = await Users.GetById(id);
+            return user;
+        }
 
         public async Task<bool> CreateUser(User userToCreate)
         {
@@ -53,7 +68,7 @@ namespace BackEnd.Services
             // Database logic
             try
             {
-                await _unitOfWork.Users.Create(userToCreate);
+                await Users.Create(userToCreate);
             }
             catch
             {
@@ -75,7 +90,7 @@ namespace BackEnd.Services
             // Database logic
             try
             {
-                await _unitOfWork.Users.Update(userToUpdate);
+                await Users.Update(userToUpdate);
             }
             catch
             {
@@ -96,7 +111,7 @@ namespace BackEnd.Services
             // Database logic
             try
             {
-                await _unitOfWork.Users.Delete(userToDelete);
+                await Users.Delete(userToDelete);
             }
             catch
             {
@@ -107,26 +122,33 @@ namespace BackEnd.Services
 
         public async Task<IEnumerable<UserTitle>> GetTitles()
         {
-            return await _unitOfWork.Titles.GetAll();
+            return await Titles.GetAll();
         }
 
-       
         public async Task<UserTitle> GetTitle(int id)
         {
-            return await _unitOfWork.Titles.GetById(id);
+            return await Titles.GetById(id);
         }
 
         public async Task<IEnumerable<UserType>> GetTypes()
         {
-            return await _unitOfWork.Types.GetAll();
+            return await Types.GetAll();
         }
 
-       
         public async Task<UserType> GetType(int id)
         {
-            return await _unitOfWork.Types.GetById(id);
+            return await Types.GetById(id);
+        }
+
+        public int Complete()
+        {
+            return _context.SaveChanges();
+        }
+        public void Dispose()
+        {
+            _context.Dispose();
+
         }
     }
-
 }
 

@@ -40,7 +40,6 @@ namespace BackEnd
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ITypeRepository, TypeRepository>();
             services.AddTransient<ITitleRepository, TitleRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserService, UserService>();
             #endregion
         }

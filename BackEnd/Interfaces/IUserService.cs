@@ -1,11 +1,16 @@
 ﻿using BackEnd.Data;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface IUserService
+    public interface IUserService : IDisposable
     {
+        IUserRepository Users { get; }
+        ITypeRepository Types { get; }
+        ITitleRepository Titles { get; }
+        int Complete();
         Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<User>> GetActiveUsers();
         Task<User> GetUser(int id);
