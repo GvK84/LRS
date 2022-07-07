@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface IUserService : IDisposable
+    public interface IUserService 
+        //: IDisposable
     {
-        IUserRepository Users { get; }
-        ITypeRepository Types { get; }
-        ITitleRepository Titles { get; }
-        int Complete();
+        //IUserRepository Users { get; }
+        //ITypeRepository Types { get; }
+        //ITitleRepository Titles { get; }
+        //int Complete();
         Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<User>> GetActiveUsers();
         Task<User> GetUser(int id);

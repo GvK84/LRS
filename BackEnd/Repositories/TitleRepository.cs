@@ -3,7 +3,7 @@ using BackEnd.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using System.Linq;
 
 namespace BackEnd.Repositories
 {
@@ -14,5 +14,10 @@ namespace BackEnd.Repositories
 
 
         }
+
+        public async Task<int> GetMaxId()
+        {
+            return await _context.UserTitles.MaxAsync(t => t.Id);
+        } 
     }
 }

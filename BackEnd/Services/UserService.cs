@@ -10,38 +10,44 @@ namespace BackEnd.Services
     public class UserService : IUserService
     {
         //private readonly ModelStateDictionary _modelState;
-        private readonly LRS_DBContext _context;
+        private readonly IUserRepository Users;
+        private readonly ITitleRepository Titles;
+        private readonly ITypeRepository Types;
+        
+        //private readonly LRS_DBContext _context;
 
-        public UserService(LRS_DBContext context)
+        public UserService(IUserRepository userRepository, ITitleRepository titleRepository, ITypeRepository typeRepository)
         {
-            _context = context;
-            Users = new UserRepository(_context);
-            Titles = new TitleRepository(_context);
-            Types = new TypeRepository(_context);
+            //_context = context;
+            Users = userRepository;
+            Titles = titleRepository;
+            Types = typeRepository;
         }
 
-        public UserService()
-        {
-            _context = new LRS_DBContext();
-            Users = new UserRepository(_context);
-            Titles = new TitleRepository(_context);
-            Types = new TypeRepository(_context);
-        }
-
-        public IUserRepository Users { get; private set; }
-        public ITitleRepository Titles { get; private set; }
-        public ITypeRepository Types { get; private set; }
-
-        //protected bool ValidateUser(User userToValidate)
+        //public UserService()
         //{
-        //    //if (userToValidate.Name.Trim().Length == 0)
-        //    //    _modelState.AddModelError("Name", "Name is required.");
-        //    //if (userToValidate.UserTypeId < 0)
-        //    //    _modelState.AddModelError("UserType", "User Type is invalid.");
-        //    //if (userToValidate.UserTitleId < 0)
-        //    //    _modelState.AddModelError("UserTitle", "User Title is invalid.");
-        //    return _modelState.IsValid;
+        //    _context = new LRS_DBContext();
+        //    Users = new UserRepository(_context);
+        //    Titles = new TitleRepository(_context);
+        //    Types = new TypeRepository(_context);
         //}
+
+        //public IUserRepository Users { get; private set; }
+        //public ITitleRepository Titles { get; private set; }
+        //public ITypeRepository Types { get; private set; }
+
+        public async Task<bool> ValidateUser(User userToValidate)
+        {
+            var titlemax = await Titles.GetMaxId();
+            var typemax = await Types.GetMaxId();
+            if (userToValidate.Name.Trim().Length == 0)
+                return false;
+            if (userToValidate.UserTypeId > typemax)
+                return false;
+            if (userToValidate.UserTitleId > titlemax)
+                return false;
+            return true;
+        }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
@@ -62,8 +68,8 @@ namespace BackEnd.Services
         public async Task<bool> CreateUser(User userToCreate)
         {
             // Validation logic
-            //if (!ValidateUser(userToCreate))
-            //    return false;
+            if (!ValidateUser(userToCreate).Result)
+                return false;
 
             // Database logic
             try
@@ -80,8 +86,8 @@ namespace BackEnd.Services
         public async Task<bool> UpdateUser(int id, User userToUpdate)
         {
             // Validation logic
-            //if (!ValidateUser(userToUpdate))
-            //    return false;
+            if (!ValidateUser(userToUpdate).Result)
+                return false;
 
             if (id != userToUpdate.Id)
             {
@@ -140,15 +146,15 @@ namespace BackEnd.Services
             return await Types.GetById(id);
         }
 
-        public int Complete()
-        {
-            return _context.SaveChanges();
-        }
-        public void Dispose()
-        {
-            _context.Dispose();
+        //public int Complete()
+        //{
+        //    return _context.SaveChanges();
+        //}
+        //public void Dispose()
+        //{
+        //    _context.Dispose();
 
-        }
+        //}
     }
 }
 

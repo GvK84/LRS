@@ -7,5 +7,6 @@ namespace BackEnd.Interfaces
 {
     public interface ITypeRepository: IGenericRepository<UserType>
     {
+        Task<int> GetMaxId();
     }
 }
