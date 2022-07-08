@@ -8,6 +8,7 @@ namespace BackEnd.Data
 {
     public partial class UserType
     {
+        /// <summary>Initializes a new instance of the <see cref="UserType" /> class.</summary>
         public UserType()
         {
             Users = new HashSet<User>();

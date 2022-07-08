@@ -1,6 +1,6 @@
 ﻿namespace BackEnd.Data
 {
-    public class AngLog
+    public class LogMessage
     {
         public string Message;
         public string FileName;

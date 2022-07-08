@@ -12,15 +12,19 @@ namespace BackEnd.Controllers
     [ApiController]
     public class TitlesController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IMainService _service;
 
-        public TitlesController(IUserService mainservice)
+        /// <summary>Initializes a new instance of the <see cref="TitlesController" /> class.</summary>
+        /// <param name="mainservice">The mainservice.</param>
+        public TitlesController(IMainService mainservice)
         {
             _service = mainservice;
         }
 
 
         // GET: api/Titles
+        /// <summary>Gets the titles.</summary>
+        /// <returns>Result</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserTitle>>> GetTitles()
         {
@@ -29,6 +33,9 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/Titles/5
+        /// <summary>Gets the title by its identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<UserTitle>> GetTitle(int id)
         {

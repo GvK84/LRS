@@ -1,0 +1,1108 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front-end documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">front-end documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  UserDetailComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/user-detail/user-detail.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-user-detail</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./user-detail.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./user-detail.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#titles" >titles</a>
+                            </li>
+                            <li>
+                                <a href="#types" >types</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#add" >add</a>
+                            </li>
+                            <li>
+                                <a href="#delete" >delete</a>
+                            </li>
+                            <li>
+                                <a href="#getTitles" >getTitles</a>
+                            </li>
+                            <li>
+                                <a href="#getTypes" >getTypes</a>
+                            </li>
+                            <li>
+                                <a href="#getUser" >getUser</a>
+                            </li>
+                            <li>
+                                <a href="#goBack" >goBack</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectTitle" >onSelectTitle</a>
+                            </li>
+                            <li>
+                                <a href="#onSelectType" >onSelectType</a>
+                            </li>
+                            <li>
+                                <a href="#save" >save</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, userService: <a href="../injectables/ApiuserService.html" target="_self">ApiuserService</a>, location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/user-detail/user-detail.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ApiuserService.html" target="_self" >ApiuserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>location</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/Location" target="_blank" >Location</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="add"></a>
+                    <span class="name">
+                        <span ><b>add</b></span>
+                        <a href="#add"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>add()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete"></a>
+                    <span class="name">
+                        <span ><b>delete</b></span>
+                        <a href="#delete"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTitles"></a>
+                    <span class="name">
+                        <span ><b>getTitles</b></span>
+                        <a href="#getTitles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTitles()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:71</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getTypes"></a>
+                    <span class="name">
+                        <span ><b>getTypes</b></span>
+                        <a href="#getTypes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getTypes()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="75"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:75</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUser"></a>
+                    <span class="name">
+                        <span ><b>getUser</b></span>
+                        <a href="#getUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:44</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <span ><b>goBack</b></span>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectTitle"></a>
+                    <span class="name">
+                        <span ><b>onSelectTitle</b></span>
+                        <a href="#onSelectTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectTitle(TitleId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TitleId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelectType"></a>
+                    <span class="name">
+                        <span ><b>onSelectType</b></span>
+                        <a href="#onSelectType"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelectType(TypeId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TypeId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="save"></a>
+                    <span class="name">
+                        <span ><b>save</b></span>
+                        <a href="#save"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>save()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="53"
+                            class="link-to-prism">src/app/user-detail/user-detail.component.ts:53</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="titles"></a>
+                    <span class="name">
+                        <span ><b>titles</b></span>
+                        <a href="#titles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Title.html" target="_self" >Title[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/user-detail/user-detail.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="types"></a>
+                    <span class="name">
+                        <span ><b>types</b></span>
+                        <a href="#types"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/Type.html" target="_self" >Type[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/user-detail/user-detail.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/User.html" target="_self" >User | undefined</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/user-detail/user-detail.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, AfterViewChecked, AfterContentInit, AfterViewInit, AfterContentChecked } from &#x27;@angular/core&#x27;;
+import { User, Title, Type } from &#x27;../user&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Location } from &#x27;@angular/common&#x27;;
+import { ApiuserService } from &#x27;../apiuser.service&#x27;;
+
+
+
+
+
+@Component({
+  selector: &#x27;app-user-detail&#x27;,
+  templateUrl: &#x27;./user-detail.component.html&#x27;,
+  styleUrls: [&#x27;./user-detail.component.css&#x27;]
+})
+export class UserDetailComponent implements OnInit{
+
+  user: User | undefined;
+  titles: Title[] &#x3D; [];
+  types: Type[] &#x3D; [];
+
+
+  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location) {
+
+  }
+
+  ngOnInit(): void {
+    this.getTitles();
+    this.getTypes();
+    this.getUser();
+
+  }
+
+  onSelectTitle(TitleId: number){
+    if (this.user) {
+      this.user.userTitleId&#x3D;TitleId;}
+  }
+
+  onSelectType(TypeId: number){
+    if (this.user) {
+      this.user.userTypeId&#x3D;TypeId;}
+  }
+
+  getUser(): void {
+    const Id &#x3D; parseInt(this.route.snapshot.paramMap.get(&#x27;Id&#x27;)!, 10);
+    this.userService.getUser(Id).subscribe(user &#x3D;&gt; this.user &#x3D; user);
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  save(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user)
+        .subscribe(() &#x3D;&gt; this.goBack());
+    }
+  }
+
+  add(): void {
+    this.goBack()
+  }
+
+  delete(): void {
+    if (this.user) {
+      this.userService.deleteUser(this.user)
+        .subscribe(() &#x3D;&gt; this.goBack());
+    }
+  }
+
+  getTitles(): void {
+    this.userService.getTitles().subscribe(titles &#x3D;&gt; this.titles &#x3D; titles);
+  }
+
+  getTypes(): void {
+    this.userService.getTypes().subscribe(types &#x3D;&gt; this.types &#x3D; types);
+  }
+
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;table *ngIf&#x3D;&quot;user&quot;&gt;
+  &lt;caption&gt;Details of user {{user.id}}&lt;/caption&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;Id&lt;/th&gt;
+      &lt;td&gt;{{user.id}}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;Name&lt;/th&gt;
+      &lt;td&gt;&lt;input id&#x3D;&quot;Name&quot; #name type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;user.name&quot; placeholder&#x3D;&quot;Name&quot;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;Surname&lt;/th&gt;
+      &lt;td&gt;&lt;input id&#x3D;&quot;Surname&quot; #surname type&#x3D;&quot;text&quot; [(ngModel)]&#x3D;&quot;user.surname&quot; placeholder&#x3D;&quot;Surname&quot;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;th scope&#x3D;&quot;row&quot;&gt;Date of Birth&lt;/th&gt;
+        &lt;td&gt;&lt;input id&#x3D;&quot;Date of Birth&quot; #date type&#x3D;&quot;date&quot; [ngModel]&#x3D;&quot;user.birthDate  | date:&#x27;yyyy-MM-dd&#x27;&quot;  (ngModelChange)&#x3D;&quot;user.birthDate &#x3D; $event&quot; /&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;Email&lt;/th&gt;
+      &lt;td&gt;&lt;input id&#x3D;&quot;Email&quot; #emailAddress type&#x3D;&quot;email&quot; [(ngModel)]&#x3D;&quot;user.emailAddress&quot; placeholder&#x3D;&quot;Email&quot;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;User Title&lt;/th&gt;
+      &lt;td&gt;
+        &lt;select id&#x3D;&quot;UserTitle&quot; [(ngModel)]&#x3D;&quot;user.userTitleId&quot; (change)&#x3D;&quot;onSelectTitle($any($event.target).value)&quot;&gt;  &lt;option disabled value&#x3D;&#x27;null&#x27;&gt;-- Select One --&lt;/option&gt;
+        &lt;option *ngFor&#x3D;&quot;let t of titles&quot; [value]&#x3D;&quot;t.id&quot;&gt;{{t.description}}&lt;/option&gt; &lt;/select&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;User Type&lt;/th&gt;
+      &lt;td&gt;
+        &lt;select id&#x3D;&quot;UserType&quot; [(ngModel)]&#x3D;&quot;user.userTypeId&quot; (change)&#x3D;&quot;onSelectType($any($event.target).value)&quot;&gt;  &lt;option disabled value&#x3D;&#x27;null&#x27;&gt;-- Select One --&lt;/option&gt;
+        &lt;option *ngFor&#x3D;&quot;let t of types&quot; [value]&#x3D;&quot;t.id&quot;&gt;{{t.description}}&lt;/option&gt; &lt;/select&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope&#x3D;&quot;row&quot;&gt;Active&lt;/th&gt;
+      &lt;td&gt;&lt;input id&#x3D;&quot;Active&quot; #isActive [(ngModel)]&#x3D;&quot;user.isActive&quot; placeholder&#x3D;&quot;Active&quot;/&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;div&gt;&lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;save()&quot;&gt;Update&lt;/button&gt;&lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;delete()&quot;&gt;Delete&lt;/button&gt;&lt;/div&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;goBack()&quot;&gt;Go Back&lt;/button&gt;
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./user-detail.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">table, thead, th, td {
+  border: 1px solid;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+caption {
+  font-size: large;
+  font-weight: bold;
+  border: 1px solid;
+  padding: 5px;
+}
+
+th{
+  text-align: right;
+}
+
+button {
+  padding:5px 5px;
+  margin:5px 5px;
+  background-color:#dcdbecfa;
+  text-align:center;
+  border-radius: 5px;
+  border-color:black;
+}
+
+button:hover {
+  background-color:#756de6fa;
+}
+
+input{
+  border:none;
+  width:250px;
+
+}
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><table *ngIf="user">  <caption>Details of user {{user.id}}</caption>  <tbody>    <tr>      <th scope="row">Id</th>      <td>{{user.id}}</td>    </tr>    <tr>      <th scope="row">Name</th>      <td><input id="Name" #name type="text" [(ngModel)]="user.name" placeholder="Name"/></td>    </tr>    <tr>      <th scope="row">Surname</th>      <td><input id="Surname" #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>    </tr>    <tr>        <th scope="row">Date of Birth</th>        <td><input id="Date of Birth" #date type="date" [ngModel]="user.birthDate  | date:\'yyyy-MM-dd\'"  (ngModelChange)="user.birthDate = $event" /></td>      </tr>    <tr>      <th scope="row">Email</th>      <td><input id="Email" #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>    </tr>    <tr>      <th scope="row">User Title</th>      <td>        <select id="UserTitle" [(ngModel)]="user.userTitleId" (change)="onSelectTitle($any($event.target).value)">  <option disabled value=\'null\'>-- Select One --</option>        <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option> </select>      </td>    </tr>    <tr>      <th scope="row">User Type</th>      <td>        <select id="UserType" [(ngModel)]="user.userTypeId" (change)="onSelectType($any($event.target).value)">  <option disabled value=\'null\'>-- Select One --</option>        <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option> </select>      </td>    </tr>    <tr>      <th scope="row">Active</th>      <td><input id="Active" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>    </tr>  </tbody></table><br><br><div><button type="button" (click)="save()">Update</button><button type="button" (click)="delete()">Delete</button></div><br><br><button type="button" (click)="goBack()">Go Back</button></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'MapComponent', 'selector': 'app-map'},{'name': 'MenuComponent', 'selector': 'app-menu'},{'name': 'UserAddComponent', 'selector': 'app-user-add'},{'name': 'UserDetailComponent', 'selector': 'app-user-detail'},{'name': 'UsersComponent', 'selector': 'app-users'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UserDetailComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserDetailComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

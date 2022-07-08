@@ -17,9 +17,11 @@ namespace BackEnd.Controllers
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
 
-        private readonly IUserService _service;
-        
-        public UsersController(IUserService mainservice)
+        private readonly IMainService _service;
+
+        /// <summary>Initializes a new instance of the <see cref="UsersController" /> class.</summary>
+        /// <param name="mainservice">The mainservice.</param>
+        public UsersController(IMainService mainservice)
         {
             _service = mainservice;
         }
@@ -27,6 +29,8 @@ namespace BackEnd.Controllers
 
 
         // GET: api/Users
+        /// <summary>Gets the users.</summary>
+        /// <returns>Result</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
@@ -35,6 +39,9 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/Users/5
+        /// <summary>Gets the user by its identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
         {
@@ -51,6 +58,10 @@ namespace BackEnd.Controllers
 
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>Updates the user.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="user">The user.</param>
+        /// <returns>Result</returns>
         [HttpPut("{id}")]
         public ActionResult PutUser(int id, User user)
         {
@@ -64,6 +75,9 @@ namespace BackEnd.Controllers
 
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>Creates the user.</summary>
+        /// <param name="user">The user.</param>
+        /// <returns>Result</returns>
         [HttpPost]
         public ActionResult<User> PostUser(User user)
         {
@@ -79,6 +93,9 @@ namespace BackEnd.Controllers
         }
 
         // DELETE: api/Users/5
+        /// <summary>Deletes the user.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
         [HttpDelete("{id}")]
         public ActionResult DeleteUser(int id)
         {

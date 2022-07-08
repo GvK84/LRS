@@ -12,15 +12,19 @@ namespace BackEnd.Controllers
     [ApiController]
     public class TypesController : ControllerBase
     {
-        private readonly IUserService _service;
+        private readonly IMainService _service;
 
-        public TypesController(IUserService mainservice)
+        /// <summary>Initializes a new instance of the <see cref="TypesController" /> class.</summary>
+        /// <param name="mainservice">The mainservice.</param>
+        public TypesController(IMainService mainservice)
         {
             _service = mainservice;
         }
 
 
         // GET: api/Types
+        /// <summary>Gets the types.</summary>
+        /// <returns>Result</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserType>>> GetTypes()
         {
@@ -29,6 +33,9 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/Types/5
+        /// <summary>Gets the type by its identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<UserType>> GetType(int id)
         {

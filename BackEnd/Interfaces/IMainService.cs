@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BackEnd.Interfaces
 {
-    public interface IUserService 
+    public interface IMainService 
         //: IDisposable
     {
         //IUserRepository Users { get; }

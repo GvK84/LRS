@@ -10,14 +10,17 @@ namespace BackEnd.Controllers
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         // POST: api/logs
+        /// <summary>Legs the specified message.</summary>
+        /// <param name="message">The message.</param>
+        /// <returns>Result</returns>
         [HttpPost]
-        public IActionResult Post([FromBody] AngLog dto)
+        public IActionResult Post([FromBody] LogMessage message)
         {
-            var msg = $"MESSAGE: {dto.Message} - " +
-                      $"FILE: {dto.FileName} - " +
-                      $"LEVEL: {dto.Level} - " +
-                      $"LINENUMBER: {dto.LineNumber} - " +
-                      $"TIMESTAMP: {dto.Timestamp:F}";
+            var msg = $"MESSAGE: {message.Message} - " +
+                      $"FILE: {message.FileName} - " +
+                      $"LEVEL: {message.Level} - " +
+                      $"LINENUMBER: {message.LineNumber} - " +
+                      $"TIMESTAMP: {message.Timestamp:F}";
             log.Info(msg);
             log.Error(msg);
             return Ok();
