@@ -16,7 +16,7 @@ namespace UnitTesting
         /// <summary>Initializes a new instance of the <see cref="TestService" /> class.</summary>
         public TestService()
         {
-           
+
         }
 
         /// <summary>Test the GetUsers method</summary>
@@ -84,13 +84,9 @@ namespace UnitTesting
             var newuser = new User { Name = "Gigi", UserTitleId = 1, UserTypeId = 1 };
 
             userrepo.Setup(r => r.Create(It.IsAny<User>())).Returns(Task.CompletedTask);
-            titlerepo.Setup(r => r.GetMaxId()).ReturnsAsync(2);
-            typerepo.Setup(r => r.GetMaxId()).ReturnsAsync(2);
 
             var service = new MainService(userrepo.Object, titlerepo.Object, typerepo.Object);
             var createresult = await service.CreateUser(newuser);
-            titlerepo.Verify(r => r.GetMaxId());
-            typerepo.Verify(r => r.GetMaxId());
             userrepo.Verify(r => r.Create(newuser));
             Assert.AreEqual(createresult, true);
 
@@ -110,8 +106,7 @@ namespace UnitTesting
 
             var service = new MainService(userrepo.Object, titlerepo.Object, typerepo.Object);
             var updateresult = await service.UpdateUser(1, newuser);
-            titlerepo.Verify(r => r.GetMaxId());
-            typerepo.Verify(r => r.GetMaxId());
+            
             userrepo.Verify(r => r.Update(newuser));
             Assert.AreEqual(updateresult, true);
         }
@@ -139,7 +134,7 @@ namespace UnitTesting
         /// <param name="expectedvalue">The expected value of the test
         /// result</param>
         [DataTestMethod]
-        [DynamicData(nameof(UserTestingData), DynamicDataSourceType.Method)]      
+        [DynamicData(nameof(UserTestingData), DynamicDataSourceType.Method)]
         public async Task ValidateUserTest(User user, bool expectedvalue)
         {
             var userrepo = new Mock<IUserRepository>();

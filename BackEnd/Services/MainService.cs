@@ -73,11 +73,6 @@ namespace BackEnd.Services
         /// <returns>True or false</returns>
         public async Task<bool> CreateUser(User userToCreate)
         {
-            // Validation logic
-            if (!ValidateUser(userToCreate).Result)
-                return false;
-
-            // Database logic
             try
             {
                 await Users.Create(userToCreate);
@@ -95,15 +90,10 @@ namespace BackEnd.Services
         /// <returns>True or false</returns>
         public async Task<bool> UpdateUser(int id, User userToUpdate)
         {
-            // Validation logic
-            if (!ValidateUser(userToUpdate).Result)
-                return false;
-
             if (id != userToUpdate.Id)
             {
                 return false;
             }
-            // Database logic
             try
             {
                 await Users.Update(userToUpdate);
@@ -121,13 +111,11 @@ namespace BackEnd.Services
         public async Task<bool> DeleteUser(int id)
         {
             var userToDelete = GetUser(id).Result;
-            // Validation logic
 
             if (userToDelete == null)
             {
                 return false;
             }
-            // Database logic
             try
             {
                 await Users.Delete(userToDelete);

@@ -65,6 +65,15 @@ namespace BackEnd.Controllers
         [HttpPut("{id}")]
         public ActionResult PutUser(int id, User user)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if (!_service.ValidateUser(user).Result)
+            {
+                return BadRequest("Not a valid user");
+            }
+
             if (!_service.UpdateUser(id, user).Result) 
             { 
                 return StatusCode(500); 
@@ -84,6 +93,10 @@ namespace BackEnd.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+            if (!_service.ValidateUser(user).Result)
+            {
+                return BadRequest("Not a valid user");
             }
             if (!_service.CreateUser(user).Result)
             {
