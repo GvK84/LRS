@@ -12,6 +12,7 @@ namespace BackEnd.Interfaces
         //ITypeRepository Types { get; }
         //ITitleRepository Titles { get; }
         //int Complete();
+        Task<bool> ValidateUser(User user);
         Task<IEnumerable<User>> GetUsers();
         Task<IEnumerable<User>> GetActiveUsers();
         Task<User> GetUser(int id);

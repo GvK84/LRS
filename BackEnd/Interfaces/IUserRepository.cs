@@ -8,7 +8,7 @@ namespace BackEnd.Interfaces
 {
     public interface IUserRepository : IGenericRepository<User>
     {
-        bool EntityExists(int id);
+        bool UserExists(int id);
         Task<IEnumerable<User>> GetAllActive();
 
     }

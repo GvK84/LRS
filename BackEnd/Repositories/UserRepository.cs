@@ -15,7 +15,7 @@ namespace BackEnd.Repositories
             
 
         }
-        public bool EntityExists(int id)
+        public bool UserExists(int id)
         {
             return _context.Users.Any(e => e.Id == id);
         }

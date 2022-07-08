@@ -2,6 +2,7 @@
 using BackEnd.Interfaces;
 using BackEnd.Repositories;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -40,11 +41,11 @@ namespace BackEnd.Services
         {
             var titlemax = await Titles.GetMaxId();
             var typemax = await Types.GetMaxId();
-            if (userToValidate.Name.Trim().Length == 0)
+            if (string.IsNullOrEmpty(userToValidate.Name))
                 return false;
-            if (userToValidate.UserTypeId > typemax)
+            if (userToValidate.UserTypeId > typemax || userToValidate.UserTypeId<1)
                 return false;
-            if (userToValidate.UserTitleId > titlemax)
+            if (userToValidate.UserTitleId > titlemax || userToValidate.UserTitleId < 1)
                 return false;
             return true;
         }
