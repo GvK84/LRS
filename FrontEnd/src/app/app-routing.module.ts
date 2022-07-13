@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './users/users.component';
-import { HomeComponent } from './home/home.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
-import { MapComponent } from './map/map.component';
-import { UserAddComponent } from './user-add/user-add.component';
+import { UsersComponent } from './userfiles/users/users.component';
+import { HomeComponent } from './navfiles/home/home.component';
+import { UserDetailComponent } from './userfiles/user-detail/user-detail.component';
+import { MapComponent } from './mapfiles/map.component';
+import { UserAddComponent } from './userfiles/user-add/user-add.component';
+
 
 const routes: Routes = [
 

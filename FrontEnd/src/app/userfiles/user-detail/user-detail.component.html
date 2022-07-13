@@ -45,11 +45,12 @@
 <br>
 <br>
 
-<div><button type="button" (click)="save()">Update</button><button type="button" (click)="delete()">Delete</button></div>
+<div><button type="button" *ngIf="user" (click)="save()">Update</button>
+      <button type="button" *ngIf="user" (click)="delete()">Delete</button></div>
 
 <br>
 <br>
-<button type="button" (click)="goBack()">Go Back</button>
+<button type="button" *ngIf="user" (click)="goBack()">Go Back</button>
 
 
 

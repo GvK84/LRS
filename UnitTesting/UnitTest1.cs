@@ -36,7 +36,8 @@ namespace UnitTesting
             var users = await service.GetUsers();
             userrepo.Verify(r => r.GetAll());
             var element = users.Where(r => r.Name == "Gigi3").First();
-            Assert.AreEqual(element.UserTypeId, 2);
+            Assert.AreEqual(element.UserTypeId, 2); 
+            Assert.AreEqual(users.Count(), 3);
         }
 
         /// <summary>Test the GetActiveUsers method</summary>

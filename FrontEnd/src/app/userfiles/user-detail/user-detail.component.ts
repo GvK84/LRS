@@ -1,10 +1,8 @@
-import { Component, OnInit, Input, AfterViewChecked, AfterContentInit, AfterViewInit, AfterContentChecked } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User, Title, Type } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiuserService } from '../apiuser.service';
-
-
 
 
 
