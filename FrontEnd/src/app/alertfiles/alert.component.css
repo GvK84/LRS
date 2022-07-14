@@ -1,18 +1,74 @@
-h2 {
-  color: #A80000;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: lighter;
+.alert {
+  display:flex;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 20px;
+  min-width: 400px;
+  max-width: 400px;
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  overflow: hidden;
 }
 
-.clear {
-  color: #333;
-  background-color: #eee;
-  margin-bottom: 12px;
-  padding: 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
+.alert .title {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  backdrop-filter: brightness(0.95);
+
 }
-.clear:hover {
-  color: white;
-  background-color: #42545C;
+
+.alert .title .mess {
+  align-self: flex-start;
+  background-color: transparent;
+  font-weight: bold;
+
+}
+
+.alert .title .but {
+  align-self: flex-end;
+  background-color: transparent;
+  font-weight: bold;
+
+}
+
+.alert .title .but button{
+  font-size: 11px;
+  padding: 2px;
+  background-color:#ffffff;
+  text-align:center;
+  border-radius: 0.5px;
+  border-color:#0655a0;
+  color: #000000;
+}
+
+.alert .title .but button:hover {
+  background-color:#000000;
+  color: #ffffff;
+
+}
+
+.alert .message {
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.alert.info {
+  background-color: rgba(254, 255, 225, 0.9);
+}
+.alert.success {
+  background-color: rgba(0, 255, 115, 0.9);
+}
+.alert.warning {
+  background-color:rgb(253, 233, 11);
+}
+.alert.error {
+  background-color: rgba(255, 142, 142, 0.9);
 }

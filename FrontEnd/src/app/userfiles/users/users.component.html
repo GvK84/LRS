@@ -1,5 +1,14 @@
-<h2 *ngIf="results==false">Our Users</h2>
-<h2 *ngIf="results==true">Results</h2>
+<div class="container">
+<div class="title">
+  <h2 *ngIf="results==false">Our Users</h2>
+  <h2 *ngIf="results==true">Results</h2>
+</div>
+
+<div class="bar">
+  <input #query type="text" placeholder="Search Full Name" />
+  <button *ngIf="results==false" (click)="findUser(query.value)">search</button>
+  <button *ngIf="results==true" (click)="clear()">clear</button>
+</div>
 
 <table>
   <tr>
@@ -8,23 +17,18 @@
     <th>Actions</th>
   </tr>
   <tr *ngFor="let user of users">
-      <td>{{user.id}}</td>
-      <td>{{user.surname}} {{user.name}}</td>
-      <td><div>
-        <a routerLink="/users/{{user.id}}"><button>View/Edit</button></a>
-        <button class="id"(click)="delete(user)">Delete</button>
-      </div></td>
+    <td>{{user.id}}</td>
+    <td>{{user.surname}} {{user.name}}</td>
+    <td>
+      <div class="actbuttons">
+      <a routerLink="/users/{{user.id}}"><button>View/Edit</button></a>
+      <button (click)="delete(user)">Delete</button>
+      </div>
+    </td>
   </tr>
 </table>
 
-<br>
-<br>
-<div>
+<div class="bar">
   <a routerLink="/../addnew"><button *ngIf="results==false"> Add</button></a></div>
-<br>
-<br>
+</div>
 
-<input id="query" #query type="text" placeholder="Search Full Name" />
-
-<button *ngIf="results==false" (click)="findUser(query.value)">search</button>
-<button *ngIf="results==true" (click)="clear()">clear</button>

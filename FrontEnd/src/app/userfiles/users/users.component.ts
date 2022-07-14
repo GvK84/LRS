@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {User} from '../user';
 import { ApiuserService } from '../apiuser.service';
 
@@ -6,11 +6,13 @@ import { ApiuserService } from '../apiuser.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['../allusers.css']
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
   results: boolean = false;
+
+  @ViewChild('query') query: any;
 
   constructor(private userService: ApiuserService) {
   }
@@ -35,6 +37,7 @@ export class UsersComponent implements OnInit {
 
   clear(): void {
     this.results = false;
+    this.query.nativeElement.value = '';
     this.ngOnInit();
   }
 

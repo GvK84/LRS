@@ -9,21 +9,16 @@ import { AlertService } from 'src/app/alertfiles/alert.service';
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
-  styleUrls: ['./user-add.component.css']
+  styleUrls: ['../allusers.css']
 })
 export class UserAddComponent implements OnInit {
 
   nuser: User = {
     id:0, name: "", surname: "",
-
-    userTypeId: 1, userTitleId: 1,
-    emailAddress: "", isActive: true, userTitleDesc: "Employee",
-    userTypeDesc: "User"
+    emailAddress: "", isActive: true,
   };
   titles: Title[] = [];
   types: Type[] = [];
-  warningmsg: string = " ";
-
 
   constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location, private alertService: AlertService) {
 
@@ -41,12 +36,17 @@ export class UserAddComponent implements OnInit {
 
   addnew(user: User): void {
     if (!user.name) {
-      this.warningmsg = "Fill in name!!!";
-      this.alertService.add("Fill in name!!!");
-      setTimeout(() => {
-        this.warningmsg = " ";
-      }, 4000)
-      return; }
+      this.alertService.warning("Invalid!","Fill in name!");
+      return;
+    }
+    if (!user.userTitleId) {
+      this.alertService.warning("Invalid!","Fill in title!");
+      return;
+    }
+    if (!user.userTypeId) {
+      this.alertService.warning("Invalid!","Fill in type!");
+      return;
+    }
     this.userService.addUser(user as User).subscribe(() => this.goBack());
   }
 

@@ -1,57 +1,63 @@
-<table *ngIf="user">
-  <caption>Details of user {{user.id}}</caption>
-  <tbody>
+<div *ngIf="user" class="container">
+  <div  class="title">
+  <h2>Details of user {{user.id}}</h2>
+  </div>
+
+  <table>
     <tr>
-      <th scope="row">Id</th>
-      <td>{{user.id}}</td>
+      <th>Id</th>
+      <td><span class="id">{{user.id}}</span></td>
     </tr>
     <tr>
-      <th scope="row">Name</th>
-      <td><input id="Name" #name type="text" [(ngModel)]="user.name" placeholder="Name"/></td>
+      <th>Name</th>
+      <td><input #name type="text" [(ngModel)]="user.name" placeholder="Name"/></td>
     </tr>
     <tr>
-      <th scope="row">Surname</th>
-      <td><input id="Surname" #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>
+      <th>Surname</th>
+      <td><input #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>
     </tr>
     <tr>
-        <th scope="row">Date of Birth</th>
-        <td><input id="Date of Birth" #date type="date" [ngModel]="user.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="user.birthDate = $event" /></td>
-      </tr>
-    <tr>
-      <th scope="row">Email</th>
-      <td><input id="Email" #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>
+      <th>Date of Birth</th>
+      <td><input #date type="date" [ngModel]="user.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="user.birthDate = $event" /></td>
     </tr>
     <tr>
-      <th scope="row">User Title</th>
+      <th>Email</th>
+      <td><input #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>
+    </tr>
+    <tr>
+      <th>User Title</th>
       <td>
-        <select id="UserTitle" [(ngModel)]="user.userTitleId" (change)="onSelectTitle($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
-        <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option> </select>
+        <select [(ngModel)]="user.userTitleId" (change)="onSelectTitle($any($event.target).value)">
+          <option disabled value='null'>-- Select A User Title --</option>
+          <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
+        </select>
       </td>
     </tr>
     <tr>
-      <th scope="row">User Type</th>
+      <th>User Type</th>
       <td>
-        <select id="UserType" [(ngModel)]="user.userTypeId" (change)="onSelectType($any($event.target).value)">  <option disabled value='null'>-- Select One --</option>
-        <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option> </select>
+        <select [(ngModel)]="user.userTypeId" (change)="onSelectType($any($event.target).value)">
+          <option disabled value='null'>-- Select A User Type --</option>
+          <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
+          </select>
       </td>
     </tr>
     <tr>
-      <th scope="row">Active</th>
-      <td><input id="Active" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>
+      <th>Active</th>
+      <td><input type="checkbox" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>
     </tr>
-
-  </tbody>
-</table>
-<br>
-<br>
-
-<div><button type="button" *ngIf="user" (click)="save()">Update</button>
-      <button type="button" *ngIf="user" (click)="delete()">Delete</button></div>
-
-<br>
-<br>
-<button type="button" *ngIf="user" (click)="goBack()">Go Back</button>
+  </table>
 
 
+<div class="bar">
+  <button type="button" *ngIf="user" (click)="save()">Update</button>
+  <button type="button" *ngIf="user" (click)="delete()">Delete</button>
+</div>
+
+<div class="bar">
+  <button type="button" *ngIf="user" (click)="goBack()">Go Back</button>
+</div>
+
+</div>
 
 

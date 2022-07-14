@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorInterceptor } from './alertfiles/error.interceptor';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AlertComponent } from './alertfiles/alert.component';
+import { AlertService } from './alertfiles/alert.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { AlertComponent } from './alertfiles/alert.component';
     FormsModule,
     CommonModule, LoggerModule.forRoot({serverLoggingUrl: 'api/logs', level: NgxLoggerLevel.LOG, serverLogLevel: NgxLoggerLevel.WARN}),
   ],
-  providers: [ApiuserService, {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
+  providers: [ApiuserService, AlertService,  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

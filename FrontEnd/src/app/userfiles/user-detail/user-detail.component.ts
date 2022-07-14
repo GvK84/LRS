@@ -9,7 +9,7 @@ import { ApiuserService } from '../apiuser.service';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  styleUrls: ['../allusers.css']
 })
 export class UserDetailComponent implements OnInit{
 
