@@ -3,6 +3,8 @@ import { User, Title, Type } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiuserService } from '../apiuser.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AlertService } from 'src/app/alertfiles/alert.service';
 
 
 
@@ -13,58 +15,47 @@ import { ApiuserService } from '../apiuser.service';
 })
 export class UserDetailComponent implements OnInit{
 
-  user: User | undefined;
+  user!: User;
   titles: Title[] = [];
   types: Type[] = [];
+  userForm!: FormGroup;
 
-
-  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location) {
+  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location,private formBuilder: FormBuilder, private alertService: AlertService) {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getTitles();
     this.getTypes();
     this.getUser();
-
-  }
-
-  onSelectTitle(TitleId: number){
-    if (this.user) {
-      this.user.userTitleId=TitleId;}
-  }
-
-  onSelectType(TypeId: number){
-    if (this.user) {
-      this.user.userTypeId=TypeId;}
   }
 
   getUser(): void {
     const Id = parseInt(this.route.snapshot.paramMap.get('Id')!, 10);
-    this.userService.getUser(Id).subscribe(user => this.user = user);
+    this.userService.getUser(Id).subscribe(user => {
+      this.user = user;
+      this.userForm = this.formBuilder.group(this.user);});
   }
 
+
   goBack(): void {
+    if (this.userForm.dirty){
+      if (confirm("Leave?\nChanges will be lost")){
+        this.location.back();
+      }
+      return;
+    }
     this.location.back();
   }
 
   save(): void {
-    if (this.user) {
-      this.userService.updateUser(this.user)
-        .subscribe(() => this.goBack());
+    if (!this.userForm.valid){
+      this.alertService.warning("Invalid!","Fill in required fields!");
+      return;
     }
+    this.userService.updateUser(this.userForm.value as User).subscribe(() => this.location.back());
   }
 
-  add(): void {
-    this.goBack()
-  }
-
-  delete(): void {
-    if (this.user) {
-      this.userService.deleteUser(this.user)
-        .subscribe(() => this.goBack());
-    }
-  }
 
   getTitles(): void {
     this.userService.getTitles().subscribe(titles => this.titles = titles);

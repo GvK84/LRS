@@ -3,12 +3,10 @@ export interface User {
   name: string;
   surname: string;
   birthDate?: Date;
-  userTypeId?: number;
-  userTitleId?: number;
+  userTypeId: number;
+  userTitleId: number;
   emailAddress: string;
   isActive: boolean;
-  userTitleDesc?:string;
-  userTypeDesc?:string;
 }
 
 export interface Title {

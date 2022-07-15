@@ -2,8 +2,8 @@
 .esri-view {
   padding: 100px;
   margin: 0;
-  height: 75%;
-  width: 75%;
+  height: 80%;
+  width: 80%;
 }
 #mapViewNode {
   padding: 0;
@@ -13,13 +13,9 @@
 }
 
 .map{
-  margin:0 0 0 0;
-
- /*  height: 700px;
-  display: block;
-  position: fixed;
-  top: 100px;
-  left: 50px;
-  right: 50px; */
+  margin: 0 0 0 0;
 }
 
+.gallery{
+  width: 200px;
+}

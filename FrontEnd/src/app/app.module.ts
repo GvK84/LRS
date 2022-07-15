@@ -16,6 +16,7 @@ import { ErrorInterceptor } from './alertfiles/error.interceptor';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { AlertComponent } from './alertfiles/alert.component';
 import { AlertService } from './alertfiles/alert.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { AlertService } from './alertfiles/alert.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     CommonModule, LoggerModule.forRoot({serverLoggingUrl: 'api/logs', level: NgxLoggerLevel.LOG, serverLogLevel: NgxLoggerLevel.WARN}),
   ],
   providers: [ApiuserService, AlertService,  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],

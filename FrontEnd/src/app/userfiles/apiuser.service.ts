@@ -14,9 +14,6 @@ import { NGXLogger } from 'ngx-logger';
 })
 export class ApiuserService {
 
- /*  usersUrl = 'https://localhost:5001/api/users';
-  titlesUrl = 'https://localhost:5001/api/titles';
-  typesUrl = 'https://localhost:5001/api/types'; */
   usersUrl = 'api/users/';
   titlesUrl = 'api/titles/';
   typesUrl = 'api/types/';

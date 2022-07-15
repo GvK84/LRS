@@ -1,63 +1,53 @@
 <div *ngIf="user" class="container">
-  <div  class="title">
-  <h2>Details of user {{user.id}}</h2>
+ <div  class="title">
+  <h2>Details of User {{userForm.value.id}}</h2>
+ </div>
+ <form [formGroup]="userForm" (ngSubmit)="save()">
+  <table>
+  <tbody>
+      <tr>
+        <th><label for="Name">Name</label></th>
+        <td><input id="Name" type="text" formControlName="name"/></td>
+      </tr>
+      <tr>
+        <th><label for="Surname">Surname</label></th>
+        <td><input id="Surname" type="text" formControlName="surname"/></td>
+      </tr>
+      <tr>
+        <th><label for="Date of Birth">Date of Birth</label></th>
+        <td><input id="Date of Birth" type="date" formControlName="birthDate"/></td>
+      </tr>
+      <tr>
+        <th><label for="Email">Email</label></th>
+        <td><input id="Email" type="text" formControlName="emailAddress"/></td>
+      </tr>
+      <tr>
+        <th><label for="UserTitleId">User Title</label></th>
+        <td>
+          <select id="UserTitleId" formControlName="userTitleId">
+            <option disabled value=0>-- Select One --</option>
+            <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="UserTypeId">User Type</label></th>
+        <td>
+          <select id="UserTypeId" formControlName="userTypeId">
+            <option disabled value=0>-- Select One --</option>
+            <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bar">
+    <button type="submit">Save</button>
+  </div>
+  </form>
+
+  <div class="bar">
+    <button (click)="goBack()">Go Back</button>
   </div>
 
-  <table>
-    <tr>
-      <th>Id</th>
-      <td><span class="id">{{user.id}}</span></td>
-    </tr>
-    <tr>
-      <th>Name</th>
-      <td><input #name type="text" [(ngModel)]="user.name" placeholder="Name"/></td>
-    </tr>
-    <tr>
-      <th>Surname</th>
-      <td><input #surname type="text" [(ngModel)]="user.surname" placeholder="Surname"/></td>
-    </tr>
-    <tr>
-      <th>Date of Birth</th>
-      <td><input #date type="date" [ngModel]="user.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="user.birthDate = $event" /></td>
-    </tr>
-    <tr>
-      <th>Email</th>
-      <td><input #emailAddress type="email" [(ngModel)]="user.emailAddress" placeholder="Email"/></td>
-    </tr>
-    <tr>
-      <th>User Title</th>
-      <td>
-        <select [(ngModel)]="user.userTitleId" (change)="onSelectTitle($any($event.target).value)">
-          <option disabled value='null'>-- Select A User Title --</option>
-          <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th>User Type</th>
-      <td>
-        <select [(ngModel)]="user.userTypeId" (change)="onSelectType($any($event.target).value)">
-          <option disabled value='null'>-- Select A User Type --</option>
-          <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
-          </select>
-      </td>
-    </tr>
-    <tr>
-      <th>Active</th>
-      <td><input type="checkbox" #isActive [(ngModel)]="user.isActive" placeholder="Active"/></td>
-    </tr>
-  </table>
-
-
-<div class="bar">
-  <button type="button" *ngIf="user" (click)="save()">Update</button>
-  <button type="button" *ngIf="user" (click)="delete()">Delete</button>
 </div>
-
-<div class="bar">
-  <button type="button" *ngIf="user" (click)="goBack()">Go Back</button>
-</div>
-
-</div>
-
-

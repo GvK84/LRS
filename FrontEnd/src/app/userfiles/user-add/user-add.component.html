@@ -3,49 +3,49 @@
     <h2>Add a new user</h2>
   </div>
 
-  <table>
-    <tbody>
-      <tr>
-        <th scope="row">Name</th>
-        <td><input id="Name" #name type="text" [(ngModel)]="nuser.name" placeholder="Name"/></td>
-      </tr>
-      <tr>
-        <th scope="row">Surname</th>
-        <td><input id="Surname" #surname type="text" [(ngModel)]="nuser.surname" placeholder="Surname"/></td>
-      </tr>
-      <tr>
-        <th scope="row">Date of Birth</th>
-        <td><input id="Date of Birth" #date type="date" [ngModel]="nuser.birthDate  | date:'yyyy-MM-dd'"  (ngModelChange)="nuser.birthDate = $event" /></td>
-      </tr>
-      <tr>
-        <th scope="row">Email</th>
-        <td><input id="Email" #emailAddress type="email" [(ngModel)]="nuser.emailAddress" placeholder="Email"/></td>
-      </tr>
-    <tr>
-      <tr>
-        <th scope="row">User Title</th>
-        <td>
-          <select id="UserTitle" (nginit) = 'null' (ngModel)="nuser.userTitleId" (change)="onSelectTitle($any($event.target).value)">
-            <option disabled value='null'>-- Select One --</option>
-            <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <th scope="row">User Type</th>
-        <td>
-          <select id="UserType" (nginit) = 'null' (ngModel)="nuser.userTypeId" (change)="onSelectType($any($event.target).value)">
-            <option disabled value='null'>-- Select One --</option>
-            <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
-          </select>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="bar">
-    <button (click)="addnew(nuser)">Save</button>
-  </div>
+  <form [formGroup]="userForm" (ngSubmit)="submit()">
+    <table>
+      <tbody>
+        <tr>
+          <th><label for="Name">Name</label></th>
+          <td><input id="Name" type="text" formControlName="name"/></td>
+        </tr>
+        <tr>
+          <th><label for="Surname">Surname</label></th>
+          <td><input id="Surname" type="text" formControlName="surname"/></td>
+        </tr>
+        <tr>
+          <th><label for="Date of Birth">Date of Birth</label></th>
+          <td><input id="Date of Birth" type="date" formControlName="birthDate"/></td>
+        </tr>
+        <tr>
+          <th><label for="Email">Email</label></th>
+          <td><input id="Email" type="text" formControlName="emailAddress"/></td>
+        </tr>
+        <tr>
+          <th><label for="UserTitleId">User Title</label></th>
+          <td>
+            <select id="UserTitleId" formControlName="userTitleId">
+              <option disabled value=0>-- Select One --</option>
+              <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th><label for="UserTypeId">User Type</label></th>
+          <td>
+            <select id="UserTypeId" formControlName="userTypeId">
+              <option disabled value=0>-- Select One --</option>
+              <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="bar">
+      <button type="submit">Save</button>
+    </div>
+  </form>
 
   <div class="bar">
     <button (click)="goBack()">Go Back</button>

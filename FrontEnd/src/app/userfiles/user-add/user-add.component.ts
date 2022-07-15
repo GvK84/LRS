@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { User, Title, Type, } from '../user';
-import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ApiuserService } from '../apiuser.service';
 import { AlertService } from 'src/app/alertfiles/alert.service';
-
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-user-add',
@@ -12,44 +11,47 @@ import { AlertService } from 'src/app/alertfiles/alert.service';
   styleUrls: ['../allusers.css']
 })
 export class UserAddComponent implements OnInit {
-
-  nuser: User = {
-    id:0, name: "", surname: "",
-    emailAddress: "", isActive: true,
-  };
+  userForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    surname: new FormControl(''),
+    birthDate: new FormControl(''),
+    emailAddress: new FormControl(''),
+    userTitleId: new FormControl(0, Validators.required),
+    userTypeId: new FormControl(0, Validators.required),
+    isActive: new FormControl (true, Validators.required)
+  });
   titles: Title[] = [];
   types: Type[] = [];
 
-  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location, private alertService: AlertService) {
-
-  }
+  constructor(private location: Location, private userService: ApiuserService, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.getTitles();
     this.getTypes();
   }
 
+
   goBack(): void {
+    if (this.userForm.dirty){
+      if (confirm("Leave?\nChanges will be lost")){
+        this.location.back();
+      }
+      return;
+    }
     this.location.back();
   }
 
-
-  addnew(user: User): void {
-    if (!user.name) {
-      this.alertService.warning("Invalid!","Fill in name!");
-      return;
-    }
-    if (!user.userTitleId) {
-      this.alertService.warning("Invalid!","Fill in title!");
-      return;
-    }
-    if (!user.userTypeId) {
-      this.alertService.warning("Invalid!","Fill in type!");
-      return;
-    }
-    this.userService.addUser(user as User).subscribe(() => this.goBack());
+  clear(): void {
+    this.userForm.reset()
   }
 
+  submit(): void {
+    if (!this.userForm.valid || (this.userForm.value.userTypeId==0) || (this.userForm.value.userTitleId==0)){
+      this.alertService.warning("Invalid!","Fill in required fields!");
+      return;
+    }
+    this.userService.addUser(this.userForm.value as User).subscribe(() => this.clear());
+  }
 
   getTitles(): void {
     this.userService.getTitles().subscribe(titles => this.titles = titles);
@@ -57,15 +59,5 @@ export class UserAddComponent implements OnInit {
 
   getTypes(): void {
     this.userService.getTypes().subscribe(types => this.types = types);
-  }
-
-  onSelectTitle(TitleId: number){
-    if (this.nuser) {
-      this.nuser.userTitleId=TitleId;}
-  }
-
-  onSelectType(TypeId: number){
-    if (this.nuser) {
-      this.nuser.userTypeId=TypeId;}
   }
 }

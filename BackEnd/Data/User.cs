@@ -18,12 +18,6 @@ namespace BackEnd.Data
         public string EmailAddress { get; set; }
         public bool? IsActive { get; set; }
 
-
-        [NotMapped]
-        public string UserTitleDesc { get { return UserTitle.Description; } }
-        [NotMapped]
-        public string UserTypeDesc { get { return UserType.Description; } }
-
         [JsonIgnore]
         public virtual UserTitle UserTitle { get; set; }
         [JsonIgnore]

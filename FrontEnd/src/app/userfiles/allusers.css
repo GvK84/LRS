@@ -19,7 +19,17 @@
   color: darkblue;
 }
 
-.bar{
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+}
+
+.bar {
   margin-top: 20px;
 }
 
@@ -85,6 +95,8 @@ td .id{
 
 select {
   border: none;
+  margin: 0;
+  width: 100%;
 }
 
 select:focus-visible {
@@ -111,4 +123,3 @@ td .actbuttons button:hover {
   color: white;
   font-size: 12px;
 }
-
