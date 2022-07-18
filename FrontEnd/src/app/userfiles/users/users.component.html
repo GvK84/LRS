@@ -2,6 +2,9 @@
 <div class="title">
   <h2 *ngIf="results==false">Our Users</h2>
   <h2 *ngIf="results==true">Results</h2>
+  <h4><label for="active">Show Inactive Users</label>
+      <input #active type="checkbox" [checked]="showInactive" (change)="toggleUsers(active.checked)"/>
+  </h4>
 </div>
 
 <div class="bar">
@@ -31,6 +34,6 @@
 <div class="bar">
   <a routerLink="/../addnew"><button *ngIf="results==false"> Add</button></a>
 </div>
-
+<div class="bottom"></div>
 </div>
 

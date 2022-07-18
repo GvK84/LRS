@@ -34,6 +34,16 @@ namespace BackEnd.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
+            var users = await _service.GetUsers();
+            return Ok(users);
+        }
+
+        // GET: api/Users/active
+        /// <summary>Gets the users.</summary>
+        /// <returns>Result</returns>
+        [HttpGet("active")]
+        public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
+        {
             var users = await _service.GetActiveUsers();
             return Ok(users);
         }

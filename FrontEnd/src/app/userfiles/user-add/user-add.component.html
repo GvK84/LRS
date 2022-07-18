@@ -1,5 +1,5 @@
 <div class="container">
-  <div  class="title">
+  <div class="title">
     <h2>Add a new user</h2>
   </div>
 
@@ -7,12 +7,14 @@
     <table>
       <tbody>
         <tr>
-          <th><label for="Name">Name</label></th>
-          <td><input id="Name" type="text" formControlName="name"/></td>
+          <th><label for="Name">Name *</label></th>
+          <td [class]="{'errorinput' : isFieldInvalid('name')}"><input id="Name" type="text" formControlName="name"/></td>
+          <td *ngIf="isFieldInvalid('name')" class="warn">Required Field</td>
         </tr>
         <tr>
-          <th><label for="Surname">Surname</label></th>
-          <td><input id="Surname" type="text" formControlName="surname"/></td>
+          <th><label for="Surname">Surname *</label></th>
+          <td  [class]="{'errorinput' : isFieldInvalid('surname')}"><input id="Surname" type="text" formControlName="surname"/></td>
+          <td *ngIf="isFieldInvalid('surname')" class="warn">Required Field</td>
         </tr>
         <tr>
           <th><label for="Date of Birth">Date of Birth</label></th>
@@ -23,34 +25,37 @@
           <td><input id="Email" type="text" formControlName="emailAddress"/></td>
         </tr>
         <tr>
-          <th><label for="UserTitleId">User Title</label></th>
-          <td>
+          <th><label for="UserTitleId">User Title *</label></th>
+          <td [class]="{'errorinput' : isFieldInvalid('userTitleId')}">
             <select id="UserTitleId" formControlName="userTitleId">
               <option disabled value=0>-- Select One --</option>
               <option *ngFor="let t of titles" [value]="t.id">{{t.description}}</option>
             </select>
           </td>
+          <td *ngIf="isFieldInvalid('userTitleId')" class="warn">Required Field</td>
         </tr>
         <tr>
-          <th><label for="UserTypeId">User Type</label></th>
-          <td>
+          <th><label for="UserTypeId">User Type *</label></th>
+          <td [class]="{'errorinput' : isFieldInvalid('userTypeId')}">
             <select id="UserTypeId" formControlName="userTypeId">
               <option disabled value=0>-- Select One --</option>
               <option *ngFor="let t of types" [value]="t.id">{{t.description}}</option>
             </select>
           </td>
+          <td *ngIf="isFieldInvalid('userTypeId')" class="warn">Required Field</td>
         </tr>
       </tbody>
     </table>
     <div class="bar">
       <button type="submit">Save</button>
+
     </div>
   </form>
-
   <div class="bar">
     <button (click)="goBack()">Go Back</button>
+    <button (click)="clear()">Clear</button>
   </div>
-
+  <div class="bottom"></div>
 </div>
 
 

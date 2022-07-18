@@ -11,6 +11,7 @@ import { ApiuserService } from '../apiuser.service';
 export class UsersComponent implements OnInit {
   users: User[] = [];
   results: boolean = false;
+  showInactive = false;
 
   @ViewChild('query') query: any;
 
@@ -18,16 +19,31 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getActiveUsers();
   }
 
-  getUsers(): void {
+  getActiveUsers(): void {
+    this.userService.getActiveUsers().subscribe(users => this.users = users);
+  }
+
+  getAllUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
 
+  toggleUsers(checked: any): void {
+    if (checked) {
+      this.getAllUsers();
+    }
+    else {
+      this.getActiveUsers();
+    }
+  }
+
   delete(user:User): void {
-    this.users = this.users.filter(u => u !==user)
-    this.userService.deleteUser(user).subscribe();
+    if (confirm(`Delete user with id ${user.id}?`)){
+      this.users = this.users.filter(u => u !==user)
+      this.userService.deleteUser(user).subscribe();
+    }
   }
 
   findUser(query:string): void {
@@ -40,5 +56,7 @@ export class UsersComponent implements OnInit {
     this.query.nativeElement.value = '';
     this.ngOnInit();
   }
+
+
 
 }
