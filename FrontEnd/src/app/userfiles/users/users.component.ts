@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
   showInactive = false;
 
   @ViewChild('query') query: any;
+  @ViewChild('active') active: any;
 
   constructor(private userService: ApiuserService) {
   }
@@ -42,7 +43,7 @@ export class UsersComponent implements OnInit {
   delete(user:User): void {
     if (confirm(`Delete user with id ${user.id}?`)){
       this.users = this.users.filter(u => u !==user)
-      this.userService.deleteUser(user).subscribe();
+      this.userService.deleteUser(user).subscribe(_=>this.toggleUsers(this.active.nativeElement.checked));
     }
   }
 

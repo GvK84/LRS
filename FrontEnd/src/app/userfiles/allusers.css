@@ -143,6 +143,15 @@ td .actbuttons button {
   color: #0655a0;
 }
 
+.inactive {
+  visibility: hidden;
+}
+
+.greyed {
+  color: rgb(133, 133, 133);
+  font-style: oblique;
+}
+
 td .actbuttons button:hover {
   background-color:#0655a0;
   color: white;

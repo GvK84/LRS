@@ -20,12 +20,12 @@
     <th>Actions</th>
   </tr>
   <tr *ngFor="let user of users">
-    <td>{{user.id}}</td>
-    <td>{{user.surname}} {{user.name}}</td>
+    <td [class]="{'greyed' : user.isActive==false}">{{user.id}}</td>
+    <td [class]="{'greyed' : user.isActive==false}">{{user.surname}} {{user.name}}</td>
     <td>
       <div class="actbuttons">
       <a routerLink="/users/{{user.id}}"><button>View/Edit</button></a>
-      <button (click)="delete(user)">Delete</button>
+      <button (click)="delete(user)"  [class]="{'inactive' : user.isActive==false}">Delete</button>
       </div>
     </td>
   </tr>

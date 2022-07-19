@@ -43,6 +43,10 @@
         </td>
         <td *ngIf="isFieldInvalid('userTypeId')" class="warn">Required Field</td>
       </tr>
+      <tr>
+        <th><label for="isUserActive">Is Active</label></th>
+        <td><input id="isUserActive" type="checkbox" formControlName="isActive"/></td>
+      </tr>
     </tbody>
   </table>
   <div class="bar">

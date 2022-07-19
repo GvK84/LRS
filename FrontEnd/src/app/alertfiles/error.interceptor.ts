@@ -15,7 +15,6 @@ export class ErrorInterceptor implements HttpInterceptor {
         {
           let errorMsg = '';
           errorMsg = `Message: ${error.message}`;
-          this.alertService.error('Error', errorMsg);
           return throwError(()=> new Error(errorMsg));
         }
       )

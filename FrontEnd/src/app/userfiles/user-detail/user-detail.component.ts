@@ -73,7 +73,9 @@ export class UserDetailComponent implements OnInit{
       this.alertService.warning("Invalid!","Fill in required fields!");
       return;
     }
-    this.userService.updateUser(this.userForm.value as User).subscribe(() => this.location.back());
+    let nuser = this.userForm.value as User;
+    nuser.id=this.user.id;
+    this.userService.updateUser(nuser).subscribe(() => this.location.back());
   }
 
 

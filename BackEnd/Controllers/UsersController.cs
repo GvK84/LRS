@@ -39,7 +39,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/Users/active
-        /// <summary>Gets the users.</summary>
+        /// <summary>Gets the active users.</summary>
         /// <returns>Result</returns>
         [HttpGet("active")]
         public async Task<ActionResult<IEnumerable<User>>> GetActiveUsers()
@@ -48,6 +48,7 @@ namespace BackEnd.Controllers
             return Ok(users);
         }
 
+        
         // GET: api/Users/5
         /// <summary>Gets the user by its identifier.</summary>
         /// <param name="id">The identifier.</param>
@@ -128,7 +129,62 @@ namespace BackEnd.Controllers
             }
             return NoContent();
         }
-       
+
+        // GET: api/Users/titles
+        /// <summary>Gets the titles.</summary>
+        /// <returns>Result</returns>
+        [HttpGet("titles")]
+        public async Task<ActionResult<IEnumerable<UserTitle>>> GetTitles()
+        {
+            var titles = await _service.GetTitles();
+            return Ok(titles);
+        }
+
+        // GET: api/Users/titles/5
+        /// <summary>Gets the title by its identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
+        [HttpGet("titles/{id}")]
+        public async Task<ActionResult<UserTitle>> GetTitle(int id)
+        {
+            var title = await _service.GetTitle(id);
+
+            if (title == null)
+            {
+                //return NotFound();
+                return StatusCode(500);
+            }
+
+            return title;
+        }
+
+        // GET: api/Users/types
+        /// <summary>Gets the types.</summary>
+        /// <returns>Result</returns>
+        [HttpGet("types")]
+        public async Task<ActionResult<IEnumerable<UserType>>> GetTypes()
+        {
+            var types = await _service.GetTypes();
+            return Ok(types);
+        }
+
+        // GET: api/Users/types/5
+        /// <summary>Gets the type by its identifier.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Result</returns>
+        [HttpGet("types/{id}")]
+        public async Task<ActionResult<UserType>> GetType(int id)
+        {
+            var type = await _service.GetType(id);
+
+            if (type == null)
+            {
+                //return NotFound();
+                return StatusCode(500);
+            }
+
+            return type;
+        }
 
     }
 
