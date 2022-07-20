@@ -37,11 +37,12 @@ namespace BackEnd.Data
         /// A builder used to create or modify options for this context. Databases (and other extensions)
         /// typically define extension methods on this object that allow you to configure the context.
         /// </param>
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder
-        .UseSqlServer(ConnectionService.connstring)
-        .UseLazyLoadingProxies();
-
+        ///
+        /// TODO not needed
+        // protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // => optionsBuilder
+        // .UseSqlServer(ConnectionService.connstring)
+        // .UseLazyLoadingProxies();
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserTitle> UserTitles { get; set; }
@@ -61,6 +62,7 @@ namespace BackEnd.Data
         /// If a model is explicitly set on the options for this context (via <see cref="M:Microsoft.EntityFrameworkCore.DbContextOptionsBuilder.UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)">UseModel(Microsoft.EntityFrameworkCore.Metadata.IModel)</see>)
         /// then this method will not be run.
         /// </remarks>
+        /// TODO we have a database first approach so no need for model creating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");

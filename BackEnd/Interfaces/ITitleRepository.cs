@@ -1,12 +1,10 @@
-﻿using BackEnd.Data;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BackEnd.Data;
 
 namespace BackEnd.Interfaces
 {
     public interface ITitleRepository : IGenericRepository<UserTitle>
     {
         Task<int> GetMaxId();
-
     }
 }

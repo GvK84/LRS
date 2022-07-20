@@ -5,10 +5,10 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './navfiles/menu/menu.component';
 import { UsersComponent } from './userfiles/users/users.component';
 import { HomeComponent } from './navfiles/home/home.component';
-import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { UserDetailComponent } from './userfiles/user-detail/user-detail.component';
-import { ApiuserService } from './userfiles/apiuser.service';
+import { ApiUserService } from './userfiles/api-user.service';
 import { MapComponent } from './mapfiles/map.component';
 import { UserAddComponent } from './userfiles/user-add/user-add.component';
 import { CommonModule } from '@angular/common';
@@ -35,9 +35,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule, ReactiveFormsModule,
-    CommonModule, LoggerModule.forRoot({serverLoggingUrl: 'api/logs', level: NgxLoggerLevel.LOG, serverLogLevel: NgxLoggerLevel.WARN}),
+    CommonModule, LoggerModule.forRoot({
+      serverLoggingUrl: 'api/logs',
+      level: NgxLoggerLevel.LOG,
+      serverLogLevel: NgxLoggerLevel.WARN
+    }),
   ],
-  providers: [ApiuserService, AlertService,  {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
+  providers: [ApiUserService, AlertService, {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

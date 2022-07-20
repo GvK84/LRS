@@ -184,7 +184,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userService: <a href="../injectables/ApiuserService.html" target="_self">ApiuserService</a>)</code>
+<code>constructor(userService: <a href="../injectables/ApiUserService.html" target="_self">ApiUserService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -208,15 +208,15 @@
                                         <tbody>
                                                 <tr>
                                                         <td>userService</td>
-                                                  
+
                                                         <td>
-                                                                        <code><a href="../injectables/ApiuserService.html" target="_self" >ApiuserService</a></code>
+                                                                        <code><a href="../injectables/ApiUserService.html" target="_self" >ApiUserService</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -232,7 +232,7 @@
 
 
     <section>
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -304,7 +304,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-                        
+
                         <table class="params">
                             <thead>
                                 <tr>
@@ -336,7 +336,7 @@
 
                     </div>
                     <div class="io-description">
-                        
+
                     </div>
                 </td>
             </tr>
@@ -373,7 +373,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-                        
+
                         <table class="params">
                             <thead>
                                 <tr>
@@ -405,7 +405,7 @@
 
                     </div>
                     <div class="io-description">
-                        
+
                     </div>
                 </td>
             </tr>
@@ -487,7 +487,7 @@
     </table>
 </section>
     <section>
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -561,7 +561,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import {User} from &#x27;../user&#x27;;
-import { ApiuserService } from &#x27;../apiuser.service&#x27;;
+import { ApiUserService } from &#x27;../apiuser.service&#x27;;
 
 
 @Component({
@@ -573,7 +573,7 @@ export class UsersComponent implements OnInit {
   users: User[] &#x3D; [];
   results: boolean &#x3D; false;
 
-  constructor(private userService: ApiuserService) {
+  constructor(private userService: ApiUserService) {
   }
 
   ngOnInit(): void {
@@ -688,7 +688,7 @@ button:hover {
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>

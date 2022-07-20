@@ -5,7 +5,8 @@ namespace BackEnd.Controllers
 {
     [Route("api/logs")]
     [ApiController]
-    
+
+    // TODO where is this used?
     public class LogController : ControllerBase
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

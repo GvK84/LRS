@@ -1,9 +1,8 @@
-﻿using BackEnd.Data;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using BackEnd.Data;
 using BackEnd.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BackEnd.Repositories
 {
@@ -18,9 +17,6 @@ namespace BackEnd.Repositories
             _context = context;
         }
 
-        /// <summary>Gets the Entity (User, UserTitle, UserType) by its identifier.</summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>The Entity</returns>
         public async Task<T> GetById (int id)
         {
             //T entity =  await _context.Set<T>().FindAsync(id);
@@ -61,6 +57,6 @@ namespace BackEnd.Repositories
             await _context.SaveChangesAsync();
         }
 
-        
+
     }
 }

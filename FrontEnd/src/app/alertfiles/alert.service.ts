@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { Alert, AlertType } from "./alert";
 
+// TODO explain the use of this
 @Injectable()
 export class AlertService {
 
@@ -9,7 +10,6 @@ export class AlertService {
   private _idx = 0;
 
   constructor() {
-
   }
 
   getObservable(): Observable<Alert> {

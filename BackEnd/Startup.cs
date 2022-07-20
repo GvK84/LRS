@@ -1,13 +1,13 @@
+using BackEnd.Data;
+using BackEnd.Interfaces;
+using BackEnd.Repositories;
+using BackEnd.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using BackEnd.Interfaces;
-using BackEnd.Repositories;
-using BackEnd.Data;
-using BackEnd.Services;
 
 namespace BackEnd
 {
@@ -18,7 +18,6 @@ namespace BackEnd
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            ConnectionService.Set(configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -37,8 +36,9 @@ namespace BackEnd
                 });
             });
             services.AddControllers().AddNewtonsoftJson();
-            services.AddDbContext<LRS_DBContext>(opt =>
-                                               opt.UseSqlServer(ConnectionService.connstring));
+            services.AddDbContext<LRS_DBContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LRSDatabase")));
+
             #region Repositories
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient<IUserRepository, UserRepository>();
@@ -56,7 +56,7 @@ namespace BackEnd
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage(); 
+                app.UseDeveloperExceptionPage();
             }
 
             else

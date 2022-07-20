@@ -1,9 +1,7 @@
-﻿using BackEnd.Interfaces;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Threading.Tasks;
 using BackEnd.Data;
-using System.Linq;
+using BackEnd.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Repositories
 {
@@ -13,9 +11,8 @@ namespace BackEnd.Repositories
         /// <param name="dbContext">The database context.</param>
         public TypeRepository(LRS_DBContext dbContext) : base(dbContext)
         {
-
-
         }
+
         /// <summary>Gets the maximum identifier of the User Types.</summary>
         /// <returns>The max identifier</returns>
         public async Task<int> GetMaxId()

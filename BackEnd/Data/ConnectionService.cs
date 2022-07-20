@@ -4,6 +4,7 @@ namespace BackEnd.Data
 {
     public class ConnectionService
     {
+        // TODO is this needed? you already using services.AddDbContext below and could use Configuration.GetConnectionString("LRSDatabase") there
         public static string connstring = "";
         /// <summary>Sets the specified configuration.</summary>
         /// <param name="config">The configuration.</param>

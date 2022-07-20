@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { User, Title, Type, } from '../user';
 import { Location } from '@angular/common';
-import { ApiuserService } from '../apiuser.service';
+import { ApiUserService } from '../api-user.service';
 import { AlertService } from 'src/app/alertfiles/alert.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { NGXLogger } from 'ngx-logger';
 
+// TODO folder naming conventions
+// TODO not a web app project
 @Component({
   selector: 'app-user-add',
   templateUrl: './user-add.component.html',
@@ -16,7 +18,7 @@ export class UserAddComponent implements OnInit {
   titles: Title[] = [];
   types: Type[] = [];
   submitted = false;
-  constructor(private location: Location, private userService: ApiuserService, private alertService: AlertService, private logger: NGXLogger) { }
+  constructor(private location: Location, private userService: ApiUserService, private alertService: AlertService, private logger: NGXLogger) { }
 
   ngOnInit(): void {
     this.getTitles();
@@ -71,12 +73,9 @@ export class UserAddComponent implements OnInit {
     this.userService.getTypes().subscribe(types => this.types = types);
   }
 
-  isFieldInvalid(fieldname: string): boolean {
-    if (this.submitted && (this.userForm.get(fieldname)?.errors?.['required'] || this.userForm.get(fieldname)?.errors?.['min']))
-    {
-      return true;
-    }
-    else return false;
+  isFieldInvalid(nameField: string): boolean {
+    return !!(this.submitted &&
+      (this.userForm.get(nameField)?.errors?.['required'] || this.userForm.get(nameField)?.errors?.['min']));
   }
 
 }

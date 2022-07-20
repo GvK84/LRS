@@ -202,7 +202,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, userService: <a href="../injectables/ApiuserService.html" target="_self">ApiuserService</a>, location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>)</code>
+<code>constructor(route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, userService: <a href="../injectables/ApiUserService.html" target="_self">ApiUserService</a>, location: <a href="https://angular.io/api/common/Location" target="_blank">Location</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -226,39 +226,39 @@
                                         <tbody>
                                                 <tr>
                                                         <td>route</td>
-                                                  
+
                                                         <td>
                                                                         <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                                 <tr>
                                                         <td>userService</td>
-                                                  
+
                                                         <td>
-                                                                        <code><a href="../injectables/ApiuserService.html" target="_self" >ApiuserService</a></code>
+                                                                        <code><a href="../injectables/ApiUserService.html" target="_self" >ApiUserService</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                                 <tr>
                                                         <td>location</td>
-                                                  
+
                                                         <td>
                                                                         <code><a href="https://angular.io/api/common/Location" target="_blank" >Location</a></code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -274,7 +274,7 @@
 
 
     <section>
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -568,7 +568,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-                        
+
                         <table class="params">
                             <thead>
                                 <tr>
@@ -600,7 +600,7 @@
 
                     </div>
                     <div class="io-description">
-                        
+
                     </div>
                 </td>
             </tr>
@@ -637,7 +637,7 @@
 
                     <div class="io-description">
                         <b>Parameters :</b>
-                        
+
                         <table class="params">
                             <thead>
                                 <tr>
@@ -669,7 +669,7 @@
 
                     </div>
                     <div class="io-description">
-                        
+
                     </div>
                 </td>
             </tr>
@@ -714,7 +714,7 @@
     </table>
 </section>
     <section>
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -816,7 +816,7 @@
 import { User, Title, Type } from &#x27;../user&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { Location } from &#x27;@angular/common&#x27;;
-import { ApiuserService } from &#x27;../apiuser.service&#x27;;
+import { ApiUserService } from &#x27;../apiuser.service&#x27;;
 
 
 
@@ -834,7 +834,7 @@ export class UserDetailComponent implements OnInit{
   types: Type[] &#x3D; [];
 
 
-  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location) {
+  constructor(private route: ActivatedRoute, private userService: ApiUserService, private location: Location) {
 
   }
 
@@ -1017,7 +1017,7 @@ input{
         </div>
     </div>
 
-    
+
 </div>
 
 <script src="../js/libs/vis.min.js"></script>

@@ -1,28 +1,32 @@
-﻿using BackEnd.Data;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BackEnd.Data;
 
 namespace BackEnd.Interfaces
 {
-    public interface IMainService 
-        //: IDisposable
+    public interface IMainService
     {
-        //IUserRepository Users { get; }
-        //ITypeRepository Types { get; }
-        //ITitleRepository Titles { get; }
-        //int Complete();
         Task<bool> ValidateUser(User user);
-        Task<IEnumerable<User>> GetUsers();
+
+        // TODO it's preferable if you had a method to filter out users on backend
+        Task<IEnumerable<User>> GetUsersAsync();
+
         Task<IEnumerable<User>> GetActiveUsers();
+
         Task<User> GetUser(int id);
+
         Task<bool> CreateUser(User userToCreate);
+
         Task<bool> UpdateUser(int id, User userToUpdate);
+
         Task<bool> DeleteUser(int id);
+
         Task<IEnumerable<UserTitle>> GetTitles();
+
         Task<UserTitle> GetTitle(int id);
+
         Task<IEnumerable<UserType>> GetTypes();
+
         Task<UserType> GetType(int id);
-        
     }
 }

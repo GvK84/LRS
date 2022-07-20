@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { User, Title, Type } from '../user';
+import { Title, Type, User } from '../user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { ApiuserService } from '../apiuser.service';
+import { ApiUserService } from '../api-user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/alertfiles/alert.service';
 import { NGXLogger } from 'ngx-logger';
-
-
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['../allusers.css']
 })
-export class UserDetailComponent implements OnInit{
+export class UserDetailComponent implements OnInit {
 
   user!: User;
   titles: Title[] = [];
@@ -22,8 +20,7 @@ export class UserDetailComponent implements OnInit{
   userForm!: FormGroup;
   submitted = false;
 
-  constructor(private route: ActivatedRoute, private userService: ApiuserService, private location: Location, private logger: NGXLogger, private alertService: AlertService) {
-
+  constructor(private route: ActivatedRoute, private userService: ApiUserService, private location: Location, private logger: NGXLogger, private alertService: AlertService) {
   }
 
   ngOnInit() {
@@ -34,12 +31,12 @@ export class UserDetailComponent implements OnInit{
 
   getUser(): void {
     const Id = parseInt(this.route.snapshot.paramMap.get('Id')!, 10);
-      this.userService.getUser(Id).subscribe(user => {
-        this.user = user;
-        if (this.user){
-          this.formInit(this.user);
-        }
-      });
+    this.userService.getUser(Id).subscribe(user => {
+      this.user = user;
+      if (this.user) {
+        this.formInit(this.user);
+      }
+    });
   }
 
   formInit(user: User): void {
@@ -50,15 +47,15 @@ export class UserDetailComponent implements OnInit{
       emailAddress: new FormControl(user.emailAddress),
       userTitleId: new FormControl(user.userTitleId, Validators.min(1)),
       userTypeId: new FormControl(user.userTypeId, Validators.min(1)),
-      isActive: new FormControl (user.isActive, Validators.required)
+      isActive: new FormControl(user.isActive, Validators.required)
     });
-    this.submitted=false;
+    this.submitted = false;
   }
 
 
   goBack(): void {
-    if (this.userForm.dirty){
-      if (confirm("Leave?\nChanges will be lost")){
+    if (this.userForm.dirty) {
+      if (confirm("Leave?\nChanges will be lost")) {
         this.location.back();
       }
       return;
@@ -67,15 +64,16 @@ export class UserDetailComponent implements OnInit{
   }
 
   save(): void {
-    this.submitted=true;
-    if (!this.userForm.valid){
+    this.submitted = true;
+    if (!this.userForm.valid) {
       this.logger.warn("Missing required fields!");
-      this.alertService.warning("Invalid!","Fill in required fields!");
+      this.alertService.warning("Invalid!", "Fill in required fields!");
       return;
     }
-    let nuser = this.userForm.value as User;
-    nuser.id=this.user.id;
-    this.userService.updateUser(nuser).subscribe(() => this.location.back());
+    // TODO what does newUser stand for?
+    let newUser = this.userForm.value as User;
+    newUser.id = this.user.id;
+    this.userService.updateUser(newUser).subscribe(() => this.location.back());
   }
 
 
@@ -87,19 +85,16 @@ export class UserDetailComponent implements OnInit{
     this.userService.getTypes().subscribe(types => this.types = types);
   }
 
-  isFieldInvalid(fieldname: string): boolean {
-    if (this.submitted && (this.userForm.get(fieldname)?.errors?.['required'] || this.userForm.get(fieldname)?.errors?.['min']))
-    {
-      return true;
-    }
-    else return false;
+  isFieldInvalid(nameField: string): boolean {
+    return !!(this.submitted &&
+      (this.userForm.get(nameField)?.errors?.['required'] || this.userForm.get(nameField)?.errors?.['min']));
   }
 
   delete(): void {
-    if (confirm(`Delete user with id ${this.user.id}?`)){
+    if (confirm(`Delete user with id ${this.user.id}?`)) {
 
-    this.userService.deleteUser(this.user).subscribe(() => this.location.back());
+      this.userService.deleteUser(this.user).subscribe(() => this.location.back());
+    }
   }
-}
 
 }

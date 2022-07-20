@@ -99,7 +99,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-AppModule-20793ab4834dc3a30c160bd90fb4af150bce1f334fed248b1dc858e133bb1d53116a60d27baed283b175190ca7c666d0cf5d8b1bab4943677a725d71ee368d64"' :
                                         'id="xs-injectables-links-module-AppModule-20793ab4834dc3a30c160bd90fb4af150bce1f334fed248b1dc858e133bb1d53116a60d27baed283b175190ca7c666d0cf5d8b1bab4943677a725d71ee368d64"' }>
                                         <li class="link">
-                                            <a href="injectables/ApiuserService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApiuserService</a>
+                                            <a href="injectables/ApiUserService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ApiUserService</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -118,7 +118,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
-                                    <a href="injectables/ApiuserService.html" data-type="entity-link" >ApiuserService</a>
+                                    <a href="injectables/ApiUserService.html" data-type="entity-link" >ApiUserService</a>
                                 </li>
                             </ul>
                         </li>

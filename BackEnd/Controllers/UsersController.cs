@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using BackEnd.Data;
 using BackEnd.Interfaces;
-using BackEnd.Repositories;
-using BackEnd.Services;
+using log4net;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.Controllers
 {
+    // TODO a readme.md file is generally suggested in such cases
     [Route("api/Users")]
     [ApiController]
-
     public class UsersController : ControllerBase
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+        // TODO not used?
+        private static readonly ILog log =
+            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private readonly IMainService _service;
 
@@ -26,15 +26,13 @@ namespace BackEnd.Controllers
             _service = mainservice;
         }
 
-
-
         // GET: api/Users
         /// <summary>Gets the users.</summary>
         /// <returns>Result</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var users = await _service.GetUsers();
+            var users = await _service.GetUsersAsync();
             return Ok(users);
         }
 
@@ -48,7 +46,7 @@ namespace BackEnd.Controllers
             return Ok(users);
         }
 
-        
+
         // GET: api/Users/5
         /// <summary>Gets the user by its identifier.</summary>
         /// <param name="id">The identifier.</param>
@@ -74,20 +72,26 @@ namespace BackEnd.Controllers
         /// <param name="user">The user.</param>
         /// <returns>Result</returns>
         [HttpPut("{id}")]
-        public ActionResult PutUser(int id, User user)
+        public async Task<ActionResult> PutUser(int id, User user)
         {
+            // TODO use of DTO model
+            // TODO there are no model restrictions for this to return invalid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            if (!_service.ValidateUser(user).Result)
+
+            // TODO we usually validate within the service
+            if (!await _service.ValidateUser(user))
             {
+                // TODO it's best to explicitly state the error
                 return BadRequest("Not a valid user");
             }
 
-            if (!_service.UpdateUser(id, user).Result) 
-            { 
-                return StatusCode(500); 
+            // TODO preferable to use await instead of result otherwise you are synchronous
+            if (!await _service.UpdateUser(id, user))
+            {
+                return StatusCode(500);
             }
 
             return NoContent();
@@ -105,14 +109,17 @@ namespace BackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
+
             if (!_service.ValidateUser(user).Result)
             {
                 return BadRequest("Not a valid user");
             }
+
             if (!_service.CreateUser(user).Result)
             {
                 return StatusCode(500);
             }
+
             return NoContent();
         }
 
@@ -127,6 +134,7 @@ namespace BackEnd.Controllers
             {
                 return StatusCode(500);
             }
+
             return NoContent();
         }
 
@@ -185,8 +193,5 @@ namespace BackEnd.Controllers
 
             return type;
         }
-
     }
-
-
 }

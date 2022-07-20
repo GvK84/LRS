@@ -186,15 +186,15 @@
 <path fill="none" stroke="black" d="M1380,-84.81C1380,-107.29 1380,-142.8 1380,-142.8 1380,-142.8 766.85,-142.8 766.85,-142.8"/>
 <polygon fill="black" stroke="black" points="766.85,-139.3 756.85,-142.8 766.85,-146.3 766.85,-139.3"/>
 </g>
-<!-- ApiuserService -->
+<!-- ApiUserService -->
 <g id="node11" class="node">
-<title>ApiuserService</title>
+<title>ApiUserService</title>
 <ellipse fill="#fdb462" stroke="black" cx="1221" cy="-66.8" rx="70.63" ry="18"/>
-<text text-anchor="middle" x="1221" y="-62.6" font-family="Times,serif" font-size="14.00">ApiuserService</text>
+<text text-anchor="middle" x="1221" y="-62.6" font-family="Times,serif" font-size="14.00">ApiUserService</text>
 </g>
-<!-- ApiuserService&#45;&gt;AppModule -->
+<!-- ApiUserService&#45;&gt;AppModule -->
 <g id="edge10" class="edge">
-<title>ApiuserService&#45;&gt;AppModule</title>
+<title>ApiUserService&#45;&gt;AppModule</title>
 <path fill="none" stroke="black" d="M1221,-84.93C1221,-105.37 1221,-135.8 1221,-135.8 1221,-135.8 766.84,-135.8 766.84,-135.8"/>
 <polygon fill="black" stroke="black" points="766.84,-132.3 756.84,-135.8 766.84,-139.3 766.84,-132.3"/>
 </g>
@@ -281,7 +281,7 @@
                             title="Official documentation about module providers"><span class="icon ion-ios-information-circle-outline"></a></h3>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="../injectables/ApiuserService.html">ApiuserService</a>
+                            <a href="../injectables/ApiUserService.html">ApiUserService</a>
                         </li>
                         <li class="list-group-item">
                             <a href="../interceptors/ErrorInterceptor.html">ErrorInterceptor</a>
@@ -324,7 +324,7 @@ import { HomeComponent } from &#x27;./home/home.component&#x27;;
 import { HttpClientModule, HTTP_INTERCEPTORS} from &#x27;@angular/common/http&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 import { UserDetailComponent } from &#x27;./user-detail/user-detail.component&#x27;;
-import { ApiuserService } from &#x27;./apiuser.service&#x27;;
+import { ApiUserService } from &#x27;./apiuser.service&#x27;;
 import { MapComponent } from &#x27;./map/map.component&#x27;;
 import { UserAddComponent } from &#x27;./user-add/user-add.component&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
@@ -349,7 +349,7 @@ import { LoggerModule, NgxLoggerLevel } from &#x27;ngx-logger&#x27;;
     FormsModule,
     CommonModule, LoggerModule.forRoot({serverLoggingUrl: &#x27;api/logs&#x27;, level: NgxLoggerLevel.LOG, serverLogLevel: NgxLoggerLevel.WARN}),
   ],
-  providers: [ApiuserService, {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
+  providers: [ApiUserService, {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

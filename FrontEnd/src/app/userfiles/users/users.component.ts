@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {User} from '../user';
-import { ApiuserService } from '../apiuser.service';
-
+import { User } from '../user';
+import { ApiUserService } from '../api-user.service';
 
 @Component({
   selector: 'app-users',
@@ -10,13 +9,14 @@ import { ApiuserService } from '../apiuser.service';
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
+  // TODO describe the use of this
   results: boolean = false;
   showInactive = false;
 
   @ViewChild('query') query: any;
   @ViewChild('active') active: any;
 
-  constructor(private userService: ApiuserService) {
+  constructor(private userService: ApiUserService) {
   }
 
   ngOnInit(): void {
@@ -34,20 +34,19 @@ export class UsersComponent implements OnInit {
   toggleUsers(checked: any): void {
     if (checked) {
       this.getAllUsers();
-    }
-    else {
+    } else {
       this.getActiveUsers();
     }
   }
 
-  delete(user:User): void {
-    if (confirm(`Delete user with id ${user.id}?`)){
-      this.users = this.users.filter(u => u !==user)
-      this.userService.deleteUser(user).subscribe(_=>this.toggleUsers(this.active.nativeElement.checked));
+  delete(user: User): void {
+    if (confirm(`Delete user with id ${user.id}?`)) {
+      this.users = this.users.filter(u => u !== user)
+      this.userService.deleteUser(user).subscribe(_ => this.toggleUsers(this.active.nativeElement.checked));
     }
   }
 
-  findUser(query:string): void {
+  findUser(query: string): void {
     this.users = this.users.filter(u => (u.surname.toLowerCase() + " " + u.name.toLowerCase()).match(query.toLowerCase()))
     this.results = true;
   }
@@ -57,7 +56,4 @@ export class UsersComponent implements OnInit {
     this.query.nativeElement.value = '';
     this.ngOnInit();
   }
-
-
-
 }
